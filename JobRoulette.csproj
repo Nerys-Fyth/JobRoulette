@@ -89,14 +89,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="die.ico" />
     <None Include="Image-Resources\tank1.png" />
     <None Include="Image-Resources\heal1.png" />
     <None Include="Image-Resources\dps1.png" />
     <None Include="Image-Resources\die.ico" />
-    <None Include="Image-Resources\tank.png" />
-    <None Include="Image-Resources\heal.png" />
-    <None Include="Image-Resources\dps.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
