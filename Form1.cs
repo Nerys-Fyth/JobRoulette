@@ -107,8 +107,10 @@ namespace JobRoulette
             {
                 if (nud.Value <= maxLvl && nud.Value >= minLvl)
                 {
-                    if (nud.Name.Equals("bluLvl") && !(bluCheck.Checked))
-                        continue;
+                    if (nud.Name.Equals("bluLvl") && !(bluCheck.Checked)) { continue; }
+                    if (nud.Tag.Equals("Tank") && !(cbTank.Checked)) { continue; }
+                    if (nud.Tag.Equals("Heal") && !(cbHeal.Checked)) { continue; }
+                    if (nud.Tag.Equals("DPS") && !(cbDPS.Checked)) { continue; }
 
                     jobs[idx] = nud.Name;
                     idx++;
@@ -182,6 +184,19 @@ namespace JobRoulette
             doc.Save(setFile);
         }
 
+        public bool CheckCheck()
+        {
+            int idx = 0;
+            foreach (var cb in this.Controls.OfType<CheckBox>())
+            {
+                if (cb.Checked)
+                    idx++;
+            }
+
+            if (idx == 0) { return false; }
+            else { return true; }
+        }
+
         private void tsExpert_Click(object sender, EventArgs e) { Roulette(maxLvl, maxLvl); }
 
         private void tsFiftyPlus_Click(object sender, EventArgs e) { Roulette(50, maxLvl - 1); }
@@ -208,6 +223,14 @@ namespace JobRoulette
         {
             if (this.TopMost) { tsAOT.Checked = false; this.TopMost = false; }
             else { tsAOT.Checked = true; this.TopMost = true; }
+        }
+
+        private void cbCheckClick(object sender, EventArgs e)
+        {
+            CheckBox chk = (CheckBox)sender;
+            bool response = CheckCheck();
+            if (!chk.Checked && !response)
+                chk.Checked = !chk.Checked;
         }
     }
 

@@ -74,10 +74,10 @@ namespace JobRoulette
             this.tsAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tsReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsSave = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsAOT = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsExit = new System.Windows.Forms.ToolStripMenuItem();
             this.hSep = new System.Windows.Forms.Label();
             this.setPanel = new System.Windows.Forms.Panel();
@@ -86,6 +86,9 @@ namespace JobRoulette
             this.maxLvlLabel = new System.Windows.Forms.Label();
             this.bluMaxLvl = new System.Windows.Forms.NumericUpDown();
             this.bluMaxLabel = new System.Windows.Forms.Label();
+            this.cbTank = new System.Windows.Forms.CheckBox();
+            this.cbHeal = new System.Windows.Forms.CheckBox();
+            this.cbDPS = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pldLvl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gnbLvl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drkLvl)).BeginInit();
@@ -117,6 +120,7 @@ namespace JobRoulette
             this.pldLvl.Name = "pldLvl";
             this.pldLvl.Size = new System.Drawing.Size(40, 21);
             this.pldLvl.TabIndex = 1;
+            this.pldLvl.Tag = "Tank";
             this.pldLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.pldLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -127,6 +131,7 @@ namespace JobRoulette
             this.gnbLvl.Name = "gnbLvl";
             this.gnbLvl.Size = new System.Drawing.Size(40, 21);
             this.gnbLvl.TabIndex = 4;
+            this.gnbLvl.Tag = "Tank";
             this.gnbLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.gnbLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -137,6 +142,7 @@ namespace JobRoulette
             this.drkLvl.Name = "drkLvl";
             this.drkLvl.Size = new System.Drawing.Size(40, 21);
             this.drkLvl.TabIndex = 3;
+            this.drkLvl.Tag = "Tank";
             this.drkLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.drkLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -147,6 +153,7 @@ namespace JobRoulette
             this.warLvl.Name = "warLvl";
             this.warLvl.Size = new System.Drawing.Size(40, 21);
             this.warLvl.TabIndex = 2;
+            this.warLvl.Tag = "Tank";
             this.warLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.warLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -157,6 +164,7 @@ namespace JobRoulette
             this.whmLvl.Name = "whmLvl";
             this.whmLvl.Size = new System.Drawing.Size(40, 21);
             this.whmLvl.TabIndex = 5;
+            this.whmLvl.Tag = "Heal";
             this.whmLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.whmLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -167,6 +175,7 @@ namespace JobRoulette
             this.schLvl.Name = "schLvl";
             this.schLvl.Size = new System.Drawing.Size(40, 21);
             this.schLvl.TabIndex = 6;
+            this.schLvl.Tag = "Heal";
             this.schLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.schLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.schLvl.ValueChanged += new System.EventHandler(this.schLvl_ValueChanged);
@@ -178,6 +187,7 @@ namespace JobRoulette
             this.astLvl.Name = "astLvl";
             this.astLvl.Size = new System.Drawing.Size(40, 21);
             this.astLvl.TabIndex = 7;
+            this.astLvl.Tag = "Heal";
             this.astLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.astLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -188,6 +198,7 @@ namespace JobRoulette
             this.mnkLvl.Name = "mnkLvl";
             this.mnkLvl.Size = new System.Drawing.Size(40, 21);
             this.mnkLvl.TabIndex = 8;
+            this.mnkLvl.Tag = "DPS";
             this.mnkLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mnkLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -198,6 +209,7 @@ namespace JobRoulette
             this.samLvl.Name = "samLvl";
             this.samLvl.Size = new System.Drawing.Size(40, 21);
             this.samLvl.TabIndex = 11;
+            this.samLvl.Tag = "DPS";
             this.samLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.samLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -208,6 +220,7 @@ namespace JobRoulette
             this.ninLvl.Name = "ninLvl";
             this.ninLvl.Size = new System.Drawing.Size(40, 21);
             this.ninLvl.TabIndex = 10;
+            this.ninLvl.Tag = "DPS";
             this.ninLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ninLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -218,6 +231,7 @@ namespace JobRoulette
             this.drgLvl.Name = "drgLvl";
             this.drgLvl.Size = new System.Drawing.Size(40, 21);
             this.drgLvl.TabIndex = 9;
+            this.drgLvl.Tag = "DPS";
             this.drgLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.drgLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -228,6 +242,7 @@ namespace JobRoulette
             this.dncLvl.Name = "dncLvl";
             this.dncLvl.Size = new System.Drawing.Size(40, 21);
             this.dncLvl.TabIndex = 14;
+            this.dncLvl.Tag = "DPS";
             this.dncLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.dncLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -238,6 +253,7 @@ namespace JobRoulette
             this.mchLvl.Name = "mchLvl";
             this.mchLvl.Size = new System.Drawing.Size(40, 21);
             this.mchLvl.TabIndex = 13;
+            this.mchLvl.Tag = "DPS";
             this.mchLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mchLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -248,6 +264,7 @@ namespace JobRoulette
             this.brdLvl.Name = "brdLvl";
             this.brdLvl.Size = new System.Drawing.Size(40, 21);
             this.brdLvl.TabIndex = 12;
+            this.brdLvl.Tag = "DPS";
             this.brdLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.brdLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -258,6 +275,7 @@ namespace JobRoulette
             this.blmLvl.Name = "blmLvl";
             this.blmLvl.Size = new System.Drawing.Size(40, 21);
             this.blmLvl.TabIndex = 15;
+            this.blmLvl.Tag = "DPS";
             this.blmLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.blmLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -268,6 +286,7 @@ namespace JobRoulette
             this.bluLvl.Name = "bluLvl";
             this.bluLvl.Size = new System.Drawing.Size(40, 21);
             this.bluLvl.TabIndex = 18;
+            this.bluLvl.Tag = "DPS";
             this.bluLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.bluLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -278,6 +297,7 @@ namespace JobRoulette
             this.rdmLvl.Name = "rdmLvl";
             this.rdmLvl.Size = new System.Drawing.Size(40, 21);
             this.rdmLvl.TabIndex = 17;
+            this.rdmLvl.Tag = "DPS";
             this.rdmLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.rdmLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             // 
@@ -288,6 +308,7 @@ namespace JobRoulette
             this.smnLvl.Name = "smnLvl";
             this.smnLvl.Size = new System.Drawing.Size(40, 21);
             this.smnLvl.TabIndex = 16;
+            this.smnLvl.Tag = "DPS";
             this.smnLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.smnLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.smnLvl.ValueChanged += new System.EventHandler(this.smnLvl_ValueChanged);
@@ -300,7 +321,7 @@ namespace JobRoulette
             this.blu.Name = "blu";
             this.blu.Size = new System.Drawing.Size(87, 18);
             this.blu.TabIndex = 77;
-            this.blu.Tag = "job";
+            this.blu.Tag = "DPS";
             this.blu.Text = "Blue Mage";
             // 
             // rdm
@@ -311,7 +332,7 @@ namespace JobRoulette
             this.rdm.Name = "rdm";
             this.rdm.Size = new System.Drawing.Size(84, 18);
             this.rdm.TabIndex = 76;
-            this.rdm.Tag = "job";
+            this.rdm.Tag = "DPS";
             this.rdm.Text = "Red Mage";
             // 
             // smn
@@ -322,7 +343,7 @@ namespace JobRoulette
             this.smn.Name = "smn";
             this.smn.Size = new System.Drawing.Size(90, 18);
             this.smn.TabIndex = 75;
-            this.smn.Tag = "job";
+            this.smn.Tag = "DPS";
             this.smn.Text = "Summoner";
             // 
             // blm
@@ -333,7 +354,7 @@ namespace JobRoulette
             this.blm.Name = "blm";
             this.blm.Size = new System.Drawing.Size(96, 18);
             this.blm.TabIndex = 74;
-            this.blm.Tag = "job";
+            this.blm.Tag = "DPS";
             this.blm.Text = "Black Mage";
             // 
             // dnc
@@ -344,7 +365,7 @@ namespace JobRoulette
             this.dnc.Name = "dnc";
             this.dnc.Size = new System.Drawing.Size(62, 18);
             this.dnc.TabIndex = 73;
-            this.dnc.Tag = "job";
+            this.dnc.Tag = "DPS";
             this.dnc.Text = "Dancer";
             // 
             // mch
@@ -355,7 +376,7 @@ namespace JobRoulette
             this.mch.Name = "mch";
             this.mch.Size = new System.Drawing.Size(80, 18);
             this.mch.TabIndex = 72;
-            this.mch.Tag = "job";
+            this.mch.Tag = "DPS";
             this.mch.Text = "Machinist";
             // 
             // brd
@@ -366,7 +387,7 @@ namespace JobRoulette
             this.brd.Name = "brd";
             this.brd.Size = new System.Drawing.Size(43, 18);
             this.brd.TabIndex = 71;
-            this.brd.Tag = "job";
+            this.brd.Tag = "DPS";
             this.brd.Text = "Bard";
             // 
             // sam
@@ -378,7 +399,7 @@ namespace JobRoulette
             this.sam.Name = "sam";
             this.sam.Size = new System.Drawing.Size(70, 18);
             this.sam.TabIndex = 70;
-            this.sam.Tag = "job";
+            this.sam.Tag = "DPS";
             this.sam.Text = "Samurai";
             // 
             // nin
@@ -389,7 +410,7 @@ namespace JobRoulette
             this.nin.Name = "nin";
             this.nin.Size = new System.Drawing.Size(46, 18);
             this.nin.TabIndex = 69;
-            this.nin.Tag = "job";
+            this.nin.Tag = "DPS";
             this.nin.Text = "Ninja";
             // 
             // drg
@@ -411,7 +432,7 @@ namespace JobRoulette
             this.mnk.Name = "mnk";
             this.mnk.Size = new System.Drawing.Size(50, 18);
             this.mnk.TabIndex = 67;
-            this.mnk.Tag = "job";
+            this.mnk.Tag = "DPS";
             this.mnk.Text = "Monk";
             // 
             // ast
@@ -422,7 +443,7 @@ namespace JobRoulette
             this.ast.Name = "ast";
             this.ast.Size = new System.Drawing.Size(93, 18);
             this.ast.TabIndex = 66;
-            this.ast.Tag = "job";
+            this.ast.Tag = "Heal";
             this.ast.Text = "Astrologian";
             // 
             // sch
@@ -433,7 +454,7 @@ namespace JobRoulette
             this.sch.Name = "sch";
             this.sch.Size = new System.Drawing.Size(66, 18);
             this.sch.TabIndex = 65;
-            this.sch.Tag = "job";
+            this.sch.Tag = "Heal";
             this.sch.Text = "Scholar";
             // 
             // whm
@@ -444,7 +465,7 @@ namespace JobRoulette
             this.whm.Name = "whm";
             this.whm.Size = new System.Drawing.Size(97, 18);
             this.whm.TabIndex = 64;
-            this.whm.Tag = "job";
+            this.whm.Tag = "Heal";
             this.whm.Text = "White Mage";
             // 
             // gnb
@@ -455,7 +476,7 @@ namespace JobRoulette
             this.gnb.Name = "gnb";
             this.gnb.Size = new System.Drawing.Size(96, 18);
             this.gnb.TabIndex = 63;
-            this.gnb.Tag = "job";
+            this.gnb.Tag = "Tank";
             this.gnb.Text = "Gunbreaker";
             // 
             // drk
@@ -466,7 +487,7 @@ namespace JobRoulette
             this.drk.Name = "drk";
             this.drk.Size = new System.Drawing.Size(96, 18);
             this.drk.TabIndex = 62;
-            this.drk.Tag = "job";
+            this.drk.Tag = "Tank";
             this.drk.Text = "Dark Knight";
             // 
             // war
@@ -477,7 +498,7 @@ namespace JobRoulette
             this.war.Name = "war";
             this.war.Size = new System.Drawing.Size(65, 18);
             this.war.TabIndex = 61;
-            this.war.Tag = "job";
+            this.war.Tag = "Tank";
             this.war.Text = "Warrior";
             // 
             // pld
@@ -488,7 +509,7 @@ namespace JobRoulette
             this.pld.Name = "pld";
             this.pld.Size = new System.Drawing.Size(63, 18);
             this.pld.TabIndex = 60;
-            this.pld.Tag = "job";
+            this.pld.Tag = "Tank";
             this.pld.Text = "Paladin";
             // 
             // menuStrip1
@@ -562,39 +583,39 @@ namespace JobRoulette
             // tsReset
             // 
             this.tsReset.Name = "tsReset";
-            this.tsReset.Size = new System.Drawing.Size(180, 22);
+            this.tsReset.Size = new System.Drawing.Size(150, 22);
             this.tsReset.Text = "Reset";
             this.tsReset.Click += new System.EventHandler(this.tsReset_Click);
+            // 
+            // tsSave
+            // 
+            this.tsSave.Name = "tsSave";
+            this.tsSave.Size = new System.Drawing.Size(150, 22);
+            this.tsSave.Text = "Save";
+            this.tsSave.Click += new System.EventHandler(this.tsSave_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(147, 6);
             // 
             // tsAOT
             // 
             this.tsAOT.CheckOnClick = true;
             this.tsAOT.Name = "tsAOT";
-            this.tsAOT.Size = new System.Drawing.Size(180, 22);
+            this.tsAOT.Size = new System.Drawing.Size(150, 22);
             this.tsAOT.Text = "Always on Top";
             this.tsAOT.Click += new System.EventHandler(this.tsAOT_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // tsSave
-            // 
-            this.tsSave.Name = "tsSave";
-            this.tsSave.Size = new System.Drawing.Size(180, 22);
-            this.tsSave.Text = "Save";
-            this.tsSave.Click += new System.EventHandler(this.tsSave_Click);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(147, 6);
             // 
             // tsExit
             // 
             this.tsExit.Name = "tsExit";
-            this.tsExit.Size = new System.Drawing.Size(180, 22);
+            this.tsExit.Size = new System.Drawing.Size(150, 22);
             this.tsExit.Text = "Exit";
             this.tsExit.Click += new System.EventHandler(this.tsExit_Click);
             // 
@@ -617,15 +638,15 @@ namespace JobRoulette
             this.setPanel.Controls.Add(this.maxLvlLabel);
             this.setPanel.Controls.Add(this.bluMaxLvl);
             this.setPanel.Controls.Add(this.bluMaxLabel);
-            this.setPanel.Location = new System.Drawing.Point(-1, 237);
+            this.setPanel.Location = new System.Drawing.Point(-1, 272);
             this.setPanel.Name = "setPanel";
-            this.setPanel.Size = new System.Drawing.Size(150, 120);
+            this.setPanel.Size = new System.Drawing.Size(150, 85);
             this.setPanel.TabIndex = 97;
             // 
             // bluCheck
             // 
             this.bluCheck.AutoSize = true;
-            this.bluCheck.Location = new System.Drawing.Point(38, 76);
+            this.bluCheck.Location = new System.Drawing.Point(38, 60);
             this.bluCheck.Name = "bluCheck";
             this.bluCheck.Size = new System.Drawing.Size(95, 17);
             this.bluCheck.TabIndex = 21;
@@ -641,7 +662,7 @@ namespace JobRoulette
             0,
             0,
             0});
-            this.maxLevel.Location = new System.Drawing.Point(11, 24);
+            this.maxLevel.Location = new System.Drawing.Point(11, 8);
             this.maxLevel.Minimum = new decimal(new int[] {
             50,
             0,
@@ -663,7 +684,7 @@ namespace JobRoulette
             // maxLvlLabel
             // 
             this.maxLvlLabel.AutoSize = true;
-            this.maxLvlLabel.Location = new System.Drawing.Point(55, 27);
+            this.maxLvlLabel.Location = new System.Drawing.Point(54, 12);
             this.maxLvlLabel.Name = "maxLvlLabel";
             this.maxLvlLabel.Size = new System.Drawing.Size(80, 13);
             this.maxLvlLabel.TabIndex = 1;
@@ -677,7 +698,7 @@ namespace JobRoulette
             0,
             0,
             0});
-            this.bluMaxLvl.Location = new System.Drawing.Point(11, 50);
+            this.bluMaxLvl.Location = new System.Drawing.Point(11, 34);
             this.bluMaxLvl.Minimum = new decimal(new int[] {
             50,
             0,
@@ -699,11 +720,56 @@ namespace JobRoulette
             // bluMaxLabel
             // 
             this.bluMaxLabel.AutoSize = true;
-            this.bluMaxLabel.Location = new System.Drawing.Point(54, 53);
+            this.bluMaxLabel.Location = new System.Drawing.Point(54, 38);
             this.bluMaxLabel.Name = "bluMaxLabel";
             this.bluMaxLabel.Size = new System.Drawing.Size(80, 13);
             this.bluMaxLabel.TabIndex = 3;
             this.bluMaxLabel.Text = "BLU Max Level";
+            // 
+            // cbTank
+            // 
+            this.cbTank.BackColor = System.Drawing.Color.Transparent;
+            this.cbTank.Checked = true;
+            this.cbTank.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbTank.ForeColor = System.Drawing.Color.Transparent;
+            this.cbTank.Image = global::JobRoulette.Properties.Resources.tank_sm;
+            this.cbTank.Location = new System.Drawing.Point(8, 244);
+            this.cbTank.Name = "cbTank";
+            this.cbTank.Size = new System.Drawing.Size(42, 30);
+            this.cbTank.TabIndex = 98;
+            this.cbTank.Tag = "Role";
+            this.cbTank.UseVisualStyleBackColor = false;
+            this.cbTank.Click += new System.EventHandler(this.cbCheckClick);
+            // 
+            // cbHeal
+            // 
+            this.cbHeal.BackColor = System.Drawing.Color.Transparent;
+            this.cbHeal.Checked = true;
+            this.cbHeal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbHeal.ForeColor = System.Drawing.Color.Transparent;
+            this.cbHeal.Image = global::JobRoulette.Properties.Resources.heal_sm;
+            this.cbHeal.Location = new System.Drawing.Point(55, 244);
+            this.cbHeal.Name = "cbHeal";
+            this.cbHeal.Size = new System.Drawing.Size(42, 30);
+            this.cbHeal.TabIndex = 99;
+            this.cbHeal.Tag = "Role";
+            this.cbHeal.UseVisualStyleBackColor = false;
+            this.cbHeal.Click += new System.EventHandler(this.cbCheckClick);
+            // 
+            // cbDPS
+            // 
+            this.cbDPS.BackColor = System.Drawing.Color.Transparent;
+            this.cbDPS.Checked = true;
+            this.cbDPS.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbDPS.ForeColor = System.Drawing.Color.Transparent;
+            this.cbDPS.Image = global::JobRoulette.Properties.Resources.dps_sm;
+            this.cbDPS.Location = new System.Drawing.Point(103, 244);
+            this.cbDPS.Name = "cbDPS";
+            this.cbDPS.Size = new System.Drawing.Size(42, 30);
+            this.cbDPS.TabIndex = 100;
+            this.cbDPS.Tag = "Role";
+            this.cbDPS.UseVisualStyleBackColor = false;
+            this.cbDPS.Click += new System.EventHandler(this.cbCheckClick);
             // 
             // JobRoulette
             // 
@@ -751,6 +817,9 @@ namespace JobRoulette
             this.Controls.Add(this.drk);
             this.Controls.Add(this.war);
             this.Controls.Add(this.hSep);
+            this.Controls.Add(this.cbTank);
+            this.Controls.Add(this.cbDPS);
+            this.Controls.Add(this.cbHeal);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -854,6 +923,9 @@ namespace JobRoulette
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsReset;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.CheckBox cbTank;
+        private System.Windows.Forms.CheckBox cbHeal;
+        private System.Windows.Forms.CheckBox cbDPS;
     }
 }
 
