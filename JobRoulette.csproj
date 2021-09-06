@@ -37,6 +37,7 @@
   <PropertyGroup>
     <ApplicationIcon>die.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
@@ -73,6 +74,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -89,6 +91,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="die.ico" />
+    <None Include="Image-Resources\tank1.png" />
+    <None Include="Image-Resources\heal1.png" />
+    <None Include="Image-Resources\dps1.png" />
+    <None Include="Image-Resources\die.ico" />
+    <None Include="Image-Resources\tank.png" />
+    <None Include="Image-Resources\heal.png" />
+    <None Include="Image-Resources\dps.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
