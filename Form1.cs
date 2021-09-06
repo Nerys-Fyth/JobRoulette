@@ -107,6 +107,8 @@ namespace JobRoulette
 
             }
 
+            if (idx == 0) { return; }
+
             int classNo = rnd.Next(0, idx);
             string cname = jobs[classNo].TrimEnd(cetrim);
 
