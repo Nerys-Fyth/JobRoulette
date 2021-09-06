@@ -39,10 +39,7 @@ namespace JobRoulette
                     {
                         string xset = xml.Root.Descendants().ElementAt(h).Value;
                         string xval = xml.Root.Descendants().ElementAt(h).Attribute("setting").Value;
-
-                        if (xset == "maxLevel")
-                            maxLvl = Int32.Parse(xval);
-
+                        if (xset == "maxLevel") { maxLvl = Int32.Parse(xval); }
                         setList.Add(new JRsetting() { name = xset, setting = xval });
                     }
                 }
@@ -56,13 +53,9 @@ namespace JobRoulette
                 foreach (var s in setList)
                 {
                     Control c = setPanel.Controls.Find(s.name, false)[0];
-
-                    if (c.Name.Equals("bluCheck") && s.setting == "False")
-                        bluCheck.Checked = false;
-                    if (c.Name.Equals("bluCheck") && s.setting == "True")
-                        bluCheck.Checked = true;
-                    if (!(c is CheckBox))
-                        c.Text = s.setting;
+                    if (c.Name.Equals("bluCheck") && s.setting == "False") { bluCheck.Checked = false; }
+                    if (c.Name.Equals("bluCheck") && s.setting == "True") { bluCheck.Checked = true; }
+                    if (!(c is CheckBox)) { c.Text = s.setting; }
                 }
             }
 
@@ -71,15 +64,12 @@ namespace JobRoulette
 
         public void UpdateMaximums()
         {
-            if (maxLvl != ((int)maxLevel.Value))
-                maxLvl = ((int)maxLevel.Value);
+            if (maxLvl != ((int)maxLevel.Value)) { maxLvl = ((int)maxLevel.Value); }
 
             foreach (var nud in this.Controls.OfType<NumericUpDown>())
             {
                 nud.Maximum = maxLvl;
-
-                if (nud.Name.Equals("bluLvl"))
-                    nud.Maximum = bluMaxLvl.Value;
+                if (nud.Name.Equals("bluLvl")) { nud.Maximum = bluMaxLvl.Value; }
             }
         }
 
@@ -91,8 +81,7 @@ namespace JobRoulette
 
             foreach (var lbl in this.Controls.OfType<Label>())
             {
-                if (lbl.ForeColor == SystemColors.Highlight)
-                    lbl.ForeColor = SystemColors.ControlText;
+                if (lbl.ForeColor == SystemColors.Highlight) { lbl.ForeColor = SystemColors.ControlText; }
             }
         }
 
@@ -121,17 +110,12 @@ namespace JobRoulette
             int classNo = rnd.Next(0, idx);
             string cname = jobs[classNo].TrimEnd(cetrim);
 
-            foreach (var lbl in this.Controls.OfType<Label>())
-            {
-                if (lbl.Name.Equals(cname))
-                    lbl.ForeColor = SystemColors.Highlight;
-            }
+            foreach (var lbl in this.Controls.OfType<Label>()) { if (lbl.Name.Equals(cname)) { lbl.ForeColor = SystemColors.Highlight; } }
         }
 
         public void SaveSettings()
         {
             XmlDocument xml = new XmlDocument();
-
             List<Job> jobList = new List<Job> { };
             List<JRsetting> setList = new List<JRsetting> { };
 
@@ -148,8 +132,7 @@ namespace JobRoulette
             {
                 Control c = (Control)slist[i];
 
-                if (!(c is NumericUpDown || c is CheckBox))
-                    continue;
+                if (!(c is NumericUpDown || c is CheckBox)) { continue; }
 
                 string sname = c.Name.ToString();
                 string stext = "";
@@ -187,12 +170,7 @@ namespace JobRoulette
         public bool CheckCheck()
         {
             int idx = 0;
-            foreach (var cb in this.Controls.OfType<CheckBox>())
-            {
-                if (cb.Checked)
-                    idx++;
-            }
-
+            foreach (var cb in this.Controls.OfType<CheckBox>()) { if (cb.Checked) { idx++; } }
             if (idx == 0) { return false; }
             else { return true; }
         }
@@ -229,8 +207,7 @@ namespace JobRoulette
         {
             CheckBox chk = (CheckBox)sender;
             bool response = CheckCheck();
-            if (!chk.Checked && !response)
-                chk.Checked = !chk.Checked;
+            if (!chk.Checked && !response) { chk.Checked = !chk.Checked; }
         }
     }
 
