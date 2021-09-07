@@ -107,7 +107,11 @@ namespace JobRoulette
 
             }
 
-            if (idx == 0) { return; }
+            if (idx == 0)
+            {
+                ShowToolTip("No Jobs between " + minLvl + " and " + maxLvl + ".", 2000);
+                return;
+            }
 
             int classNo = rnd.Next(0, idx);
             string cname = jobs[classNo].TrimEnd(cetrim);
@@ -175,6 +179,11 @@ namespace JobRoulette
             foreach (var cb in this.Controls.OfType<CheckBox>()) { if (cb.Checked) { idx++; } }
             if (idx == 0) { return false; }
             else { return true; }
+        }
+
+        private void ShowToolTip(string message, int duration)
+        {
+            new ToolTip().Show(message, this, Cursor.Position.X - this.Location.X, Cursor.Position.Y - this.Location.Y, duration);
         }
 
         private void tsExpert_Click(object sender, EventArgs e) { Roulette(maxLvl, maxLvl); }
