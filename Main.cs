@@ -17,7 +17,7 @@ namespace JobRoulette
         public int maxLvl = 0;
         public char[] cetrim = { 'L', 'v', 'l' };
 
-        public JobRoulette() { InitializeComponent(); ProfileCB.SelectedIndex = 0; LoadSettings(0, true); }
+        public JobRoulette() { InitializeComponent(); ProfileCB.SelectedIndex = 0; LoadSettings(0, true); UpdateMaximums(); }
 
         public void LoadSettings(int charIdx, bool firstLoad)
         {
@@ -265,8 +265,10 @@ namespace JobRoulette
                 if (nud.Name.Equals("samLvl") && nud.Value > 0 && nud.Value < 50) { samLvl.Minimum = 50; }
                 if (nud.Name.Equals("gnbLvl") && nud.Value > 0 && nud.Value < 60) { gnbLvl.Minimum = 60; }
                 if (nud.Name.Equals("dncLvl") && nud.Value > 0 && nud.Value < 60) { dncLvl.Minimum = 60; }
-                if (nud.Name.Equals("sagLvl") && nud.Value > 0 && nud.Value < 70) { sagLvl.Minimum = 70; }
+                if (nud.Name.Equals("sgeLvl") && nud.Value > 0 && nud.Value < 70) { sgeLvl.Minimum = 70; }
                 if (nud.Name.Equals("rprLvl") && nud.Value > 0 && nud.Value < 70) { rprLvl.Minimum = 70; }
+                if (nud.Name.Equals("vprLvl") && nud.Value > 0 && nud.Value < 80) { vprLvl.Minimum = 80; }
+                if (nud.Name.Equals("pctLvl") && nud.Value > 0 && nud.Value < 80) { pctLvl.Minimum = 80; }
             }
         }
 
@@ -316,9 +318,9 @@ namespace JobRoulette
             foreach (var ctl in setPanel.Controls.OfType<NumericUpDown>())
             {
                 if (ctl.Name.Equals("maxLevel"))
-                    ctl.Value = 90;
+                    ctl.Value = 100;
                 if (ctl.Name.Equals("bluMaxLvl"))
-                    ctl.Value = 70;
+                    ctl.Value = 80;
             }
             foreach (var ctl in setPanel.Controls.OfType<CheckBox>())
                 ctl.Checked = false;
@@ -370,6 +372,11 @@ namespace JobRoulette
         {
             NumericUpDown nud = (NumericUpDown)sender;
             nud.Select(0, 2);
+        }
+
+        private void blu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
