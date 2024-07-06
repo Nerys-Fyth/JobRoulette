@@ -587,7 +587,6 @@ namespace JobRoulette
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.Size = new System.Drawing.Size(316, 24);
             this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.TabStop = true;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // tsExpert
@@ -804,7 +803,7 @@ namespace JobRoulette
             this.cbTank.Location = new System.Drawing.Point(8, 314);
             this.cbTank.Name = "cbTank";
             this.cbTank.Size = new System.Drawing.Size(42, 30);
-            this.cbTank.TabIndex = 31;
+            this.cbTank.TabIndex = 33;
             this.cbTank.Tag = "Role";
             this.cbTank.UseVisualStyleBackColor = false;
             this.cbTank.Click += new System.EventHandler(this.cbCheckClick);
@@ -819,7 +818,7 @@ namespace JobRoulette
             this.cbHeal.Location = new System.Drawing.Point(55, 314);
             this.cbHeal.Name = "cbHeal";
             this.cbHeal.Size = new System.Drawing.Size(42, 30);
-            this.cbHeal.TabIndex = 32;
+            this.cbHeal.TabIndex = 34;
             this.cbHeal.Tag = "Role";
             this.cbHeal.UseVisualStyleBackColor = false;
             this.cbHeal.Click += new System.EventHandler(this.cbCheckClick);
@@ -834,7 +833,7 @@ namespace JobRoulette
             this.cbDPS.Location = new System.Drawing.Point(103, 314);
             this.cbDPS.Name = "cbDPS";
             this.cbDPS.Size = new System.Drawing.Size(42, 30);
-            this.cbDPS.TabIndex = 33;
+            this.cbDPS.TabIndex = 35;
             this.cbDPS.Tag = "Role";
             this.cbDPS.UseVisualStyleBackColor = false;
             this.cbDPS.Click += new System.EventHandler(this.cbCheckClick);
@@ -847,10 +846,11 @@ namespace JobRoulette
             this.ProfileCB.Items.AddRange(new object[] {
             "Default"});
             this.ProfileCB.Location = new System.Drawing.Point(10, 428);
-            this.ProfileCB.MaxDropDownItems = 40;
+            this.ProfileCB.MaxDropDownItems = 36;
             this.ProfileCB.Name = "ProfileCB";
             this.ProfileCB.Size = new System.Drawing.Size(245, 21);
             this.ProfileCB.TabIndex = 0;
+            this.ProfileCB.TabStop = false;
             this.ProfileCB.SelectedIndexChanged += new System.EventHandler(this.ProfileCB_SelectedIndexChanged);
             this.ProfileCB.Click += new System.EventHandler(this.tsSave_Click);
             // 
@@ -859,7 +859,7 @@ namespace JobRoulette
             this.pcbAdd.Location = new System.Drawing.Point(261, 427);
             this.pcbAdd.Name = "pcbAdd";
             this.pcbAdd.Size = new System.Drawing.Size(45, 25);
-            this.pcbAdd.TabIndex = 102;
+            this.pcbAdd.TabIndex = 37;
             this.pcbAdd.TabStop = false;
             this.pcbAdd.Text = "Add...";
             this.pcbAdd.UseMnemonic = false;
@@ -872,7 +872,6 @@ namespace JobRoulette
             this.sgeLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sgeLvl.Location = new System.Drawing.Point(6, 233);
             this.sgeLvl.Name = "sgeLvl";
-            this.sgeLvl.ReadOnly = true;
             this.sgeLvl.Size = new System.Drawing.Size(40, 21);
             this.sgeLvl.TabIndex = 18;
             this.sgeLvl.Tag = "Heal";
@@ -900,7 +899,6 @@ namespace JobRoulette
             this.vprLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vprLvl.Location = new System.Drawing.Point(160, 162);
             this.vprLvl.Name = "vprLvl";
-            this.vprLvl.ReadOnly = true;
             this.vprLvl.Size = new System.Drawing.Size(40, 21);
             this.vprLvl.TabIndex = 24;
             this.vprLvl.Tag = "DPS";
@@ -932,6 +930,7 @@ namespace JobRoulette
             this.bluLvl.Tag = "DPS";
             this.bluLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.bluLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.bluLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // blu
             // 
@@ -962,7 +961,6 @@ namespace JobRoulette
             this.rprLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rprLvl.Location = new System.Drawing.Point(160, 136);
             this.rprLvl.Name = "rprLvl";
-            this.rprLvl.ReadOnly = true;
             this.rprLvl.Size = new System.Drawing.Size(40, 21);
             this.rprLvl.TabIndex = 23;
             this.rprLvl.Tag = "DPS";
@@ -970,6 +968,7 @@ namespace JobRoulette
             this.rprLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.rprLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.rprLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
+            this.rprLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // JobRoulette
             // 
