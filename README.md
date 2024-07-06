@@ -13,4 +13,4 @@ BLU is there too not feel left out, but he's Special so disabled by default.
 
 Will automatically save your class levels and minute settings on exiting from the menu to an xml file in the same folder that the app is run from.
 
-.NET 4.7.2 required
+.NET 4.8 required
