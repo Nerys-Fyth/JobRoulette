@@ -111,7 +111,7 @@ namespace JobRoulette
             ResetHighlights();
 
             int idx = 0;
-            string[] jobs = new string[20];
+            string[] jobs = new string[22];
 
             foreach (var nud in this.Controls.OfType<NumericUpDown>())
             {
@@ -371,7 +371,7 @@ namespace JobRoulette
         private void anyLvl_OnFocus(object sender, EventArgs e)
         {
             NumericUpDown nud = (NumericUpDown)sender;
-            nud.Select(0, 2);
+            nud.Select(0, 3);
         }
 
         private void blu_Click(object sender, EventArgs e)
