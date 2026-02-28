@@ -131,26 +131,24 @@ namespace JobRoulette
             // pldLvl
             // 
             this.pldLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pldLvl.Location = new System.Drawing.Point(6, 32);
+            this.pldLvl.Location = new System.Drawing.Point(7, 32);
             this.pldLvl.Name = "pldLvl";
-            this.pldLvl.Size = new System.Drawing.Size(40, 21);
+            this.pldLvl.Size = new System.Drawing.Size(45, 21);
             this.pldLvl.TabIndex = 11;
             this.pldLvl.Tag = "Tank";
             this.pldLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.pldLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.pldLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.pldLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // gnbLvl
             // 
             this.gnbLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gnbLvl.Location = new System.Drawing.Point(6, 113);
+            this.gnbLvl.Location = new System.Drawing.Point(7, 113);
             this.gnbLvl.Name = "gnbLvl";
-            this.gnbLvl.Size = new System.Drawing.Size(40, 21);
+            this.gnbLvl.Size = new System.Drawing.Size(45, 21);
             this.gnbLvl.TabIndex = 14;
             this.gnbLvl.Tag = "Tank";
             this.gnbLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.gnbLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.gnbLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.gnbLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.gnbLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -158,13 +156,12 @@ namespace JobRoulette
             // drkLvl
             // 
             this.drkLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drkLvl.Location = new System.Drawing.Point(6, 86);
+            this.drkLvl.Location = new System.Drawing.Point(7, 86);
             this.drkLvl.Name = "drkLvl";
-            this.drkLvl.Size = new System.Drawing.Size(40, 21);
+            this.drkLvl.Size = new System.Drawing.Size(45, 21);
             this.drkLvl.TabIndex = 13;
             this.drkLvl.Tag = "Tank";
             this.drkLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.drkLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.drkLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.drkLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.drkLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -172,39 +169,36 @@ namespace JobRoulette
             // warLvl
             // 
             this.warLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.warLvl.Location = new System.Drawing.Point(6, 59);
+            this.warLvl.Location = new System.Drawing.Point(7, 59);
             this.warLvl.Name = "warLvl";
-            this.warLvl.Size = new System.Drawing.Size(40, 21);
+            this.warLvl.Size = new System.Drawing.Size(45, 21);
             this.warLvl.TabIndex = 12;
             this.warLvl.Tag = "Tank";
             this.warLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.warLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.warLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.warLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // whmLvl
             // 
             this.whmLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.whmLvl.Location = new System.Drawing.Point(6, 152);
+            this.whmLvl.Location = new System.Drawing.Point(7, 152);
             this.whmLvl.Name = "whmLvl";
-            this.whmLvl.Size = new System.Drawing.Size(40, 21);
+            this.whmLvl.Size = new System.Drawing.Size(45, 21);
             this.whmLvl.TabIndex = 15;
             this.whmLvl.Tag = "Heal";
             this.whmLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.whmLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.whmLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.whmLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // schLvl
             // 
             this.schLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.schLvl.Location = new System.Drawing.Point(6, 179);
+            this.schLvl.Location = new System.Drawing.Point(7, 179);
             this.schLvl.Name = "schLvl";
-            this.schLvl.Size = new System.Drawing.Size(40, 21);
+            this.schLvl.Size = new System.Drawing.Size(45, 21);
             this.schLvl.TabIndex = 16;
             this.schLvl.Tag = "Heal";
             this.schLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.schLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.schLvl.ValueChanged += new System.EventHandler(this.schLvl_ValueChanged);
             this.schLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.schLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -212,13 +206,12 @@ namespace JobRoulette
             // astLvl
             // 
             this.astLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.astLvl.Location = new System.Drawing.Point(6, 206);
+            this.astLvl.Location = new System.Drawing.Point(7, 206);
             this.astLvl.Name = "astLvl";
-            this.astLvl.Size = new System.Drawing.Size(40, 21);
+            this.astLvl.Size = new System.Drawing.Size(45, 21);
             this.astLvl.TabIndex = 17;
             this.astLvl.Tag = "Heal";
             this.astLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.astLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.astLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.astLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.astLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -228,24 +221,22 @@ namespace JobRoulette
             this.mnkLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnkLvl.Location = new System.Drawing.Point(160, 32);
             this.mnkLvl.Name = "mnkLvl";
-            this.mnkLvl.Size = new System.Drawing.Size(40, 21);
+            this.mnkLvl.Size = new System.Drawing.Size(45, 21);
             this.mnkLvl.TabIndex = 19;
             this.mnkLvl.Tag = "DPS";
             this.mnkLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mnkLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.mnkLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.mnkLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // samLvl
             // 
             this.samLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.samLvl.Location = new System.Drawing.Point(160, 110);
+            this.samLvl.Location = new System.Drawing.Point(160, 104);
             this.samLvl.Name = "samLvl";
-            this.samLvl.Size = new System.Drawing.Size(40, 21);
+            this.samLvl.Size = new System.Drawing.Size(45, 21);
             this.samLvl.TabIndex = 22;
             this.samLvl.Tag = "DPS";
             this.samLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.samLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.samLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.samLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.samLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -253,39 +244,36 @@ namespace JobRoulette
             // ninLvl
             // 
             this.ninLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ninLvl.Location = new System.Drawing.Point(160, 84);
+            this.ninLvl.Location = new System.Drawing.Point(160, 80);
             this.ninLvl.Name = "ninLvl";
-            this.ninLvl.Size = new System.Drawing.Size(40, 21);
+            this.ninLvl.Size = new System.Drawing.Size(45, 21);
             this.ninLvl.TabIndex = 21;
             this.ninLvl.Tag = "DPS";
             this.ninLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ninLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.ninLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.ninLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // drgLvl
             // 
             this.drgLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drgLvl.Location = new System.Drawing.Point(160, 58);
+            this.drgLvl.Location = new System.Drawing.Point(160, 56);
             this.drgLvl.Name = "drgLvl";
-            this.drgLvl.Size = new System.Drawing.Size(40, 21);
+            this.drgLvl.Size = new System.Drawing.Size(45, 21);
             this.drgLvl.TabIndex = 20;
             this.drgLvl.Tag = "DPS";
             this.drgLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.drgLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.drgLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.drgLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // dncLvl
             // 
             this.dncLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dncLvl.Location = new System.Drawing.Point(160, 253);
+            this.dncLvl.Location = new System.Drawing.Point(160, 230);
             this.dncLvl.Name = "dncLvl";
-            this.dncLvl.Size = new System.Drawing.Size(40, 21);
+            this.dncLvl.Size = new System.Drawing.Size(45, 21);
             this.dncLvl.TabIndex = 27;
             this.dncLvl.Tag = "DPS";
             this.dncLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.dncLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.dncLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.dncLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.dncLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -293,13 +281,12 @@ namespace JobRoulette
             // mchLvl
             // 
             this.mchLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mchLvl.Location = new System.Drawing.Point(160, 226);
+            this.mchLvl.Location = new System.Drawing.Point(160, 206);
             this.mchLvl.Name = "mchLvl";
-            this.mchLvl.Size = new System.Drawing.Size(40, 21);
+            this.mchLvl.Size = new System.Drawing.Size(45, 21);
             this.mchLvl.TabIndex = 26;
             this.mchLvl.Tag = "DPS";
             this.mchLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mchLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.mchLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.mchLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.mchLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -307,39 +294,36 @@ namespace JobRoulette
             // brdLvl
             // 
             this.brdLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brdLvl.Location = new System.Drawing.Point(160, 199);
+            this.brdLvl.Location = new System.Drawing.Point(160, 182);
             this.brdLvl.Name = "brdLvl";
-            this.brdLvl.Size = new System.Drawing.Size(40, 21);
+            this.brdLvl.Size = new System.Drawing.Size(45, 21);
             this.brdLvl.TabIndex = 25;
             this.brdLvl.Tag = "DPS";
             this.brdLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.brdLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.brdLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.brdLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // blmLvl
             // 
             this.blmLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blmLvl.Location = new System.Drawing.Point(160, 292);
+            this.blmLvl.Location = new System.Drawing.Point(160, 260);
             this.blmLvl.Name = "blmLvl";
-            this.blmLvl.Size = new System.Drawing.Size(40, 21);
+            this.blmLvl.Size = new System.Drawing.Size(45, 21);
             this.blmLvl.TabIndex = 28;
             this.blmLvl.Tag = "DPS";
             this.blmLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.blmLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.blmLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.blmLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // pctLvl
             // 
             this.pctLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pctLvl.Location = new System.Drawing.Point(160, 370);
+            this.pctLvl.Location = new System.Drawing.Point(160, 332);
             this.pctLvl.Name = "pctLvl";
-            this.pctLvl.Size = new System.Drawing.Size(40, 21);
+            this.pctLvl.Size = new System.Drawing.Size(45, 21);
             this.pctLvl.TabIndex = 31;
             this.pctLvl.Tag = "DPS";
             this.pctLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.pctLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.pctLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.pctLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.pctLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -347,13 +331,12 @@ namespace JobRoulette
             // rdmLvl
             // 
             this.rdmLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdmLvl.Location = new System.Drawing.Point(160, 344);
+            this.rdmLvl.Location = new System.Drawing.Point(160, 308);
             this.rdmLvl.Name = "rdmLvl";
-            this.rdmLvl.Size = new System.Drawing.Size(40, 21);
+            this.rdmLvl.Size = new System.Drawing.Size(45, 21);
             this.rdmLvl.TabIndex = 30;
             this.rdmLvl.Tag = "DPS";
             this.rdmLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.rdmLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.rdmLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.rdmLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.rdmLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -361,13 +344,12 @@ namespace JobRoulette
             // smnLvl
             // 
             this.smnLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.smnLvl.Location = new System.Drawing.Point(160, 318);
+            this.smnLvl.Location = new System.Drawing.Point(160, 284);
             this.smnLvl.Name = "smnLvl";
-            this.smnLvl.Size = new System.Drawing.Size(40, 21);
+            this.smnLvl.Size = new System.Drawing.Size(45, 21);
             this.smnLvl.TabIndex = 29;
             this.smnLvl.Tag = "DPS";
             this.smnLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.smnLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.smnLvl.ValueChanged += new System.EventHandler(this.smnLvl_ValueChanged);
             this.smnLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.smnLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -376,7 +358,7 @@ namespace JobRoulette
             // 
             this.pct.AutoSize = true;
             this.pct.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pct.Location = new System.Drawing.Point(206, 370);
+            this.pct.Location = new System.Drawing.Point(206, 333);
             this.pct.Name = "pct";
             this.pct.Size = new System.Drawing.Size(103, 18);
             this.pct.TabIndex = 77;
@@ -388,7 +370,7 @@ namespace JobRoulette
             // 
             this.rdm.AutoSize = true;
             this.rdm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdm.Location = new System.Drawing.Point(206, 344);
+            this.rdm.Location = new System.Drawing.Point(206, 309);
             this.rdm.Name = "rdm";
             this.rdm.Size = new System.Drawing.Size(84, 18);
             this.rdm.TabIndex = 76;
@@ -399,7 +381,7 @@ namespace JobRoulette
             // 
             this.smn.AutoSize = true;
             this.smn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.smn.Location = new System.Drawing.Point(206, 318);
+            this.smn.Location = new System.Drawing.Point(206, 285);
             this.smn.Name = "smn";
             this.smn.Size = new System.Drawing.Size(90, 18);
             this.smn.TabIndex = 75;
@@ -410,7 +392,7 @@ namespace JobRoulette
             // 
             this.blm.AutoSize = true;
             this.blm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blm.Location = new System.Drawing.Point(206, 292);
+            this.blm.Location = new System.Drawing.Point(206, 261);
             this.blm.Name = "blm";
             this.blm.Size = new System.Drawing.Size(96, 18);
             this.blm.TabIndex = 74;
@@ -421,7 +403,7 @@ namespace JobRoulette
             // 
             this.dnc.AutoSize = true;
             this.dnc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dnc.Location = new System.Drawing.Point(206, 253);
+            this.dnc.Location = new System.Drawing.Point(206, 231);
             this.dnc.Name = "dnc";
             this.dnc.Size = new System.Drawing.Size(62, 18);
             this.dnc.TabIndex = 73;
@@ -432,7 +414,7 @@ namespace JobRoulette
             // 
             this.mch.AutoSize = true;
             this.mch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mch.Location = new System.Drawing.Point(206, 226);
+            this.mch.Location = new System.Drawing.Point(206, 207);
             this.mch.Name = "mch";
             this.mch.Size = new System.Drawing.Size(80, 18);
             this.mch.TabIndex = 72;
@@ -443,7 +425,7 @@ namespace JobRoulette
             // 
             this.brd.AutoSize = true;
             this.brd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.brd.Location = new System.Drawing.Point(206, 199);
+            this.brd.Location = new System.Drawing.Point(206, 183);
             this.brd.Name = "brd";
             this.brd.Size = new System.Drawing.Size(43, 18);
             this.brd.TabIndex = 71;
@@ -455,7 +437,7 @@ namespace JobRoulette
             this.sam.AutoSize = true;
             this.sam.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sam.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.sam.Location = new System.Drawing.Point(206, 110);
+            this.sam.Location = new System.Drawing.Point(206, 105);
             this.sam.Name = "sam";
             this.sam.Size = new System.Drawing.Size(70, 18);
             this.sam.TabIndex = 70;
@@ -466,7 +448,7 @@ namespace JobRoulette
             // 
             this.nin.AutoSize = true;
             this.nin.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nin.Location = new System.Drawing.Point(206, 84);
+            this.nin.Location = new System.Drawing.Point(206, 81);
             this.nin.Name = "nin";
             this.nin.Size = new System.Drawing.Size(46, 18);
             this.nin.TabIndex = 69;
@@ -477,7 +459,7 @@ namespace JobRoulette
             // 
             this.drg.AutoSize = true;
             this.drg.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drg.Location = new System.Drawing.Point(206, 58);
+            this.drg.Location = new System.Drawing.Point(206, 57);
             this.drg.Name = "drg";
             this.drg.Size = new System.Drawing.Size(73, 18);
             this.drg.TabIndex = 68;
@@ -488,7 +470,7 @@ namespace JobRoulette
             // 
             this.mnk.AutoSize = true;
             this.mnk.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mnk.Location = new System.Drawing.Point(206, 32);
+            this.mnk.Location = new System.Drawing.Point(206, 33);
             this.mnk.Name = "mnk";
             this.mnk.Size = new System.Drawing.Size(50, 18);
             this.mnk.TabIndex = 67;
@@ -499,7 +481,7 @@ namespace JobRoulette
             // 
             this.ast.AutoSize = true;
             this.ast.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ast.Location = new System.Drawing.Point(52, 206);
+            this.ast.Location = new System.Drawing.Point(54, 207);
             this.ast.Name = "ast";
             this.ast.Size = new System.Drawing.Size(93, 18);
             this.ast.TabIndex = 66;
@@ -510,7 +492,7 @@ namespace JobRoulette
             // 
             this.sch.AutoSize = true;
             this.sch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sch.Location = new System.Drawing.Point(52, 179);
+            this.sch.Location = new System.Drawing.Point(54, 180);
             this.sch.Name = "sch";
             this.sch.Size = new System.Drawing.Size(66, 18);
             this.sch.TabIndex = 65;
@@ -521,7 +503,7 @@ namespace JobRoulette
             // 
             this.whm.AutoSize = true;
             this.whm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.whm.Location = new System.Drawing.Point(52, 152);
+            this.whm.Location = new System.Drawing.Point(54, 153);
             this.whm.Name = "whm";
             this.whm.Size = new System.Drawing.Size(97, 18);
             this.whm.TabIndex = 64;
@@ -532,7 +514,7 @@ namespace JobRoulette
             // 
             this.gnb.AutoSize = true;
             this.gnb.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gnb.Location = new System.Drawing.Point(52, 113);
+            this.gnb.Location = new System.Drawing.Point(54, 114);
             this.gnb.Name = "gnb";
             this.gnb.Size = new System.Drawing.Size(96, 18);
             this.gnb.TabIndex = 63;
@@ -543,7 +525,7 @@ namespace JobRoulette
             // 
             this.drk.AutoSize = true;
             this.drk.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.drk.Location = new System.Drawing.Point(52, 86);
+            this.drk.Location = new System.Drawing.Point(54, 87);
             this.drk.Name = "drk";
             this.drk.Size = new System.Drawing.Size(96, 18);
             this.drk.TabIndex = 62;
@@ -554,7 +536,7 @@ namespace JobRoulette
             // 
             this.war.AutoSize = true;
             this.war.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.war.Location = new System.Drawing.Point(52, 59);
+            this.war.Location = new System.Drawing.Point(54, 60);
             this.war.Name = "war";
             this.war.Size = new System.Drawing.Size(65, 18);
             this.war.TabIndex = 61;
@@ -565,7 +547,7 @@ namespace JobRoulette
             // 
             this.pld.AutoSize = true;
             this.pld.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pld.Location = new System.Drawing.Point(52, 32);
+            this.pld.Location = new System.Drawing.Point(54, 33);
             this.pld.Name = "pld";
             this.pld.Size = new System.Drawing.Size(63, 18);
             this.pld.TabIndex = 0;
@@ -593,7 +575,7 @@ namespace JobRoulette
             // 
             this.tsExpert.BackColor = System.Drawing.Color.Transparent;
             this.tsExpert.Name = "tsExpert";
-            this.tsExpert.Size = new System.Drawing.Size(52, 20);
+            this.tsExpert.Size = new System.Drawing.Size(51, 20);
             this.tsExpert.Text = "Expert";
             this.tsExpert.Click += new System.EventHandler(this.tsExpert_Click);
             // 
@@ -644,46 +626,46 @@ namespace JobRoulette
             // tsClear
             // 
             this.tsClear.Name = "tsClear";
-            this.tsClear.Size = new System.Drawing.Size(150, 22);
+            this.tsClear.Size = new System.Drawing.Size(151, 22);
             this.tsClear.Text = "Clear Roll";
             this.tsClear.Click += new System.EventHandler(this.tsReset_Click);
             // 
             // tsFormReset
             // 
             this.tsFormReset.Name = "tsFormReset";
-            this.tsFormReset.Size = new System.Drawing.Size(150, 22);
+            this.tsFormReset.Size = new System.Drawing.Size(151, 22);
             this.tsFormReset.Text = "Reset Form";
             this.tsFormReset.Click += new System.EventHandler(this.tsFormReset_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(147, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(148, 6);
             // 
             // tsAOT
             // 
             this.tsAOT.CheckOnClick = true;
             this.tsAOT.Name = "tsAOT";
-            this.tsAOT.Size = new System.Drawing.Size(150, 22);
+            this.tsAOT.Size = new System.Drawing.Size(151, 22);
             this.tsAOT.Text = "Always on Top";
             this.tsAOT.Click += new System.EventHandler(this.tsAOT_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(147, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
             // 
             // tsSave
             // 
             this.tsSave.Name = "tsSave";
-            this.tsSave.Size = new System.Drawing.Size(150, 22);
+            this.tsSave.Size = new System.Drawing.Size(151, 22);
             this.tsSave.Text = "Save";
             this.tsSave.Click += new System.EventHandler(this.tsSave_Click);
             // 
             // tsExit
             // 
             this.tsExit.Name = "tsExit";
-            this.tsExit.Size = new System.Drawing.Size(150, 22);
+            this.tsExit.Size = new System.Drawing.Size(151, 22);
             this.tsExit.Text = "Exit";
             this.tsExit.Click += new System.EventHandler(this.tsExit_Click);
             // 
@@ -705,7 +687,7 @@ namespace JobRoulette
             this.setPanel.Controls.Add(this.maxLvlLabel);
             this.setPanel.Controls.Add(this.bluMaxLvl);
             this.setPanel.Controls.Add(this.bluMaxLabel);
-            this.setPanel.Location = new System.Drawing.Point(-1, 344);
+            this.setPanel.Location = new System.Drawing.Point(-1, 303);
             this.setPanel.Name = "setPanel";
             this.setPanel.Size = new System.Drawing.Size(150, 115);
             this.setPanel.TabIndex = 97;
@@ -713,10 +695,10 @@ namespace JobRoulette
             // bluCheck
             // 
             this.bluCheck.AutoSize = true;
-            this.bluCheck.Location = new System.Drawing.Point(41, 58);
+            this.bluCheck.Location = new System.Drawing.Point(41, 60);
             this.bluCheck.Name = "bluCheck";
             this.bluCheck.Size = new System.Drawing.Size(95, 17);
-            this.bluCheck.TabIndex = 43;
+            this.bluCheck.TabIndex = 66;
             this.bluCheck.TabStop = false;
             this.bluCheck.Text = "BLU Enabled?";
             this.bluCheck.UseVisualStyleBackColor = true;
@@ -736,11 +718,10 @@ namespace JobRoulette
             0,
             0});
             this.maxLevel.Name = "maxLevel";
-            this.maxLevel.Size = new System.Drawing.Size(47, 21);
-            this.maxLevel.TabIndex = 41;
+            this.maxLevel.Size = new System.Drawing.Size(45, 21);
+            this.maxLevel.TabIndex = 64;
             this.maxLevel.TabStop = false;
             this.maxLevel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.maxLevel.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.maxLevel.Value = new decimal(new int[] {
             100,
             0,
@@ -772,11 +753,10 @@ namespace JobRoulette
             0,
             0});
             this.bluMaxLvl.Name = "bluMaxLvl";
-            this.bluMaxLvl.Size = new System.Drawing.Size(47, 21);
-            this.bluMaxLvl.TabIndex = 42;
+            this.bluMaxLvl.Size = new System.Drawing.Size(45, 21);
+            this.bluMaxLvl.TabIndex = 65;
             this.bluMaxLvl.TabStop = false;
             this.bluMaxLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.bluMaxLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.bluMaxLvl.Value = new decimal(new int[] {
             80,
             0,
@@ -800,10 +780,10 @@ namespace JobRoulette
             this.cbTank.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbTank.ForeColor = System.Drawing.Color.Transparent;
             this.cbTank.Image = global::JobRoulette.Properties.Resources.tank_sm;
-            this.cbTank.Location = new System.Drawing.Point(8, 314);
+            this.cbTank.Location = new System.Drawing.Point(8, 273);
             this.cbTank.Name = "cbTank";
             this.cbTank.Size = new System.Drawing.Size(42, 30);
-            this.cbTank.TabIndex = 33;
+            this.cbTank.TabIndex = 61;
             this.cbTank.Tag = "Role";
             this.cbTank.UseVisualStyleBackColor = false;
             this.cbTank.Click += new System.EventHandler(this.cbCheckClick);
@@ -815,10 +795,10 @@ namespace JobRoulette
             this.cbHeal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbHeal.ForeColor = System.Drawing.Color.Transparent;
             this.cbHeal.Image = global::JobRoulette.Properties.Resources.heal_sm;
-            this.cbHeal.Location = new System.Drawing.Point(55, 314);
+            this.cbHeal.Location = new System.Drawing.Point(55, 273);
             this.cbHeal.Name = "cbHeal";
             this.cbHeal.Size = new System.Drawing.Size(42, 30);
-            this.cbHeal.TabIndex = 34;
+            this.cbHeal.TabIndex = 62;
             this.cbHeal.Tag = "Role";
             this.cbHeal.UseVisualStyleBackColor = false;
             this.cbHeal.Click += new System.EventHandler(this.cbCheckClick);
@@ -830,10 +810,10 @@ namespace JobRoulette
             this.cbDPS.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbDPS.ForeColor = System.Drawing.Color.Transparent;
             this.cbDPS.Image = global::JobRoulette.Properties.Resources.dps_sm;
-            this.cbDPS.Location = new System.Drawing.Point(103, 314);
+            this.cbDPS.Location = new System.Drawing.Point(103, 273);
             this.cbDPS.Name = "cbDPS";
             this.cbDPS.Size = new System.Drawing.Size(42, 30);
-            this.cbDPS.TabIndex = 35;
+            this.cbDPS.TabIndex = 63;
             this.cbDPS.Tag = "Role";
             this.cbDPS.UseVisualStyleBackColor = false;
             this.cbDPS.Click += new System.EventHandler(this.cbCheckClick);
@@ -845,8 +825,8 @@ namespace JobRoulette
             this.ProfileCB.FormattingEnabled = true;
             this.ProfileCB.Items.AddRange(new object[] {
             "Default"});
-            this.ProfileCB.Location = new System.Drawing.Point(10, 428);
-            this.ProfileCB.MaxDropDownItems = 36;
+            this.ProfileCB.Location = new System.Drawing.Point(10, 387);
+            this.ProfileCB.MaxDropDownItems = 67;
             this.ProfileCB.Name = "ProfileCB";
             this.ProfileCB.Size = new System.Drawing.Size(245, 21);
             this.ProfileCB.TabIndex = 0;
@@ -856,10 +836,10 @@ namespace JobRoulette
             // 
             // pcbAdd
             // 
-            this.pcbAdd.Location = new System.Drawing.Point(261, 427);
+            this.pcbAdd.Location = new System.Drawing.Point(261, 386);
             this.pcbAdd.Name = "pcbAdd";
             this.pcbAdd.Size = new System.Drawing.Size(45, 25);
-            this.pcbAdd.TabIndex = 37;
+            this.pcbAdd.TabIndex = 68;
             this.pcbAdd.TabStop = false;
             this.pcbAdd.Text = "Add...";
             this.pcbAdd.UseMnemonic = false;
@@ -870,13 +850,12 @@ namespace JobRoulette
             // 
             this.sgeLvl.BackColor = System.Drawing.SystemColors.Window;
             this.sgeLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sgeLvl.Location = new System.Drawing.Point(6, 233);
+            this.sgeLvl.Location = new System.Drawing.Point(7, 233);
             this.sgeLvl.Name = "sgeLvl";
-            this.sgeLvl.Size = new System.Drawing.Size(40, 21);
+            this.sgeLvl.Size = new System.Drawing.Size(45, 21);
             this.sgeLvl.TabIndex = 18;
             this.sgeLvl.Tag = "Heal";
             this.sgeLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.sgeLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.sgeLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.sgeLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.sgeLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -886,7 +865,7 @@ namespace JobRoulette
             this.sge.AutoSize = true;
             this.sge.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sge.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.sge.Location = new System.Drawing.Point(52, 233);
+            this.sge.Location = new System.Drawing.Point(54, 234);
             this.sge.Name = "sge";
             this.sge.Size = new System.Drawing.Size(46, 18);
             this.sge.TabIndex = 104;
@@ -897,13 +876,12 @@ namespace JobRoulette
             // 
             this.vprLvl.BackColor = System.Drawing.SystemColors.Window;
             this.vprLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vprLvl.Location = new System.Drawing.Point(160, 162);
+            this.vprLvl.Location = new System.Drawing.Point(160, 152);
             this.vprLvl.Name = "vprLvl";
-            this.vprLvl.Size = new System.Drawing.Size(40, 21);
+            this.vprLvl.Size = new System.Drawing.Size(45, 21);
             this.vprLvl.TabIndex = 24;
             this.vprLvl.Tag = "DPS";
             this.vprLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.vprLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.vprLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.vprLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.vprLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -913,7 +891,7 @@ namespace JobRoulette
             this.vpr.AutoSize = true;
             this.vpr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vpr.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.vpr.Location = new System.Drawing.Point(206, 162);
+            this.vpr.Location = new System.Drawing.Point(206, 153);
             this.vpr.Name = "vpr";
             this.vpr.Size = new System.Drawing.Size(46, 18);
             this.vpr.TabIndex = 106;
@@ -923,20 +901,19 @@ namespace JobRoulette
             // bluLvl
             // 
             this.bluLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bluLvl.Location = new System.Drawing.Point(160, 396);
+            this.bluLvl.Location = new System.Drawing.Point(160, 356);
             this.bluLvl.Name = "bluLvl";
-            this.bluLvl.Size = new System.Drawing.Size(40, 21);
+            this.bluLvl.Size = new System.Drawing.Size(45, 21);
             this.bluLvl.TabIndex = 32;
             this.bluLvl.Tag = "DPS";
             this.bluLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.bluLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.bluLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // blu
             // 
             this.blu.AutoSize = true;
             this.blu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blu.Location = new System.Drawing.Point(206, 396);
+            this.blu.Location = new System.Drawing.Point(206, 357);
             this.blu.Name = "blu";
             this.blu.Size = new System.Drawing.Size(87, 18);
             this.blu.TabIndex = 108;
@@ -948,7 +925,7 @@ namespace JobRoulette
             this.rpr.AutoSize = true;
             this.rpr.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rpr.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.rpr.Location = new System.Drawing.Point(206, 136);
+            this.rpr.Location = new System.Drawing.Point(206, 129);
             this.rpr.Name = "rpr";
             this.rpr.Size = new System.Drawing.Size(62, 18);
             this.rpr.TabIndex = 110;
@@ -959,13 +936,12 @@ namespace JobRoulette
             // 
             this.rprLvl.BackColor = System.Drawing.SystemColors.Window;
             this.rprLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rprLvl.Location = new System.Drawing.Point(160, 136);
+            this.rprLvl.Location = new System.Drawing.Point(160, 128);
             this.rprLvl.Name = "rprLvl";
-            this.rprLvl.Size = new System.Drawing.Size(40, 21);
+            this.rprLvl.Size = new System.Drawing.Size(45, 21);
             this.rprLvl.TabIndex = 23;
             this.rprLvl.Tag = "DPS";
             this.rprLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.rprLvl.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
             this.rprLvl.ValueChanged += new System.EventHandler(this.minLvl_ValueChanged);
             this.rprLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.rprLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
@@ -975,7 +951,7 @@ namespace JobRoulette
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(316, 458);
+            this.ClientSize = new System.Drawing.Size(316, 415);
             this.ControlBox = false;
             this.Controls.Add(this.rpr);
             this.Controls.Add(this.rprLvl);
