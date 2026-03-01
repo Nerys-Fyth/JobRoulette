@@ -130,6 +130,7 @@ namespace JobRoulette
             // 
             // pldLvl
             // 
+            this.pldLvl.AccessibleName = "PLD";
             this.pldLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pldLvl.Location = new System.Drawing.Point(7, 32);
             this.pldLvl.Name = "pldLvl";
@@ -137,11 +138,13 @@ namespace JobRoulette
             this.pldLvl.TabIndex = 11;
             this.pldLvl.Tag = "Tank";
             this.pldLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.pldLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
             this.pldLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.pldLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // gnbLvl
             // 
+            this.gnbLvl.AccessibleName = "GNB";
             this.gnbLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gnbLvl.Location = new System.Drawing.Point(7, 113);
             this.gnbLvl.Name = "gnbLvl";
@@ -155,6 +158,7 @@ namespace JobRoulette
             // 
             // drkLvl
             // 
+            this.drkLvl.AccessibleName = "DRK";
             this.drkLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drkLvl.Location = new System.Drawing.Point(7, 86);
             this.drkLvl.Name = "drkLvl";
@@ -168,6 +172,7 @@ namespace JobRoulette
             // 
             // warLvl
             // 
+            this.warLvl.AccessibleName = "WAR";
             this.warLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.warLvl.Location = new System.Drawing.Point(7, 59);
             this.warLvl.Name = "warLvl";
@@ -175,11 +180,13 @@ namespace JobRoulette
             this.warLvl.TabIndex = 12;
             this.warLvl.Tag = "Tank";
             this.warLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.warLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
             this.warLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.warLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // whmLvl
             // 
+            this.whmLvl.AccessibleName = "WHM";
             this.whmLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.whmLvl.Location = new System.Drawing.Point(7, 152);
             this.whmLvl.Name = "whmLvl";
@@ -187,11 +194,13 @@ namespace JobRoulette
             this.whmLvl.TabIndex = 15;
             this.whmLvl.Tag = "Heal";
             this.whmLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.whmLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
             this.whmLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.whmLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // schLvl
             // 
+            this.schLvl.AccessibleName = "SCH";
             this.schLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.schLvl.Location = new System.Drawing.Point(7, 179);
             this.schLvl.Name = "schLvl";
@@ -199,12 +208,13 @@ namespace JobRoulette
             this.schLvl.TabIndex = 16;
             this.schLvl.Tag = "Heal";
             this.schLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.schLvl.ValueChanged += new System.EventHandler(this.schLvl_ValueChanged);
+            this.schLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
             this.schLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.schLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // astLvl
             // 
+            this.astLvl.AccessibleName = "AST";
             this.astLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.astLvl.Location = new System.Drawing.Point(7, 206);
             this.astLvl.Name = "astLvl";
@@ -218,6 +228,7 @@ namespace JobRoulette
             // 
             // mnkLvl
             // 
+            this.mnkLvl.AccessibleName = "MNK";
             this.mnkLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnkLvl.Location = new System.Drawing.Point(160, 32);
             this.mnkLvl.Name = "mnkLvl";
@@ -225,11 +236,13 @@ namespace JobRoulette
             this.mnkLvl.TabIndex = 19;
             this.mnkLvl.Tag = "DPS";
             this.mnkLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mnkLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
             this.mnkLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.mnkLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // samLvl
             // 
+            this.samLvl.AccessibleName = "SAM";
             this.samLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.samLvl.Location = new System.Drawing.Point(160, 104);
             this.samLvl.Name = "samLvl";
@@ -243,6 +256,7 @@ namespace JobRoulette
             // 
             // ninLvl
             // 
+            this.ninLvl.AccessibleName = "NIN";
             this.ninLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ninLvl.Location = new System.Drawing.Point(160, 80);
             this.ninLvl.Name = "ninLvl";
@@ -250,11 +264,13 @@ namespace JobRoulette
             this.ninLvl.TabIndex = 21;
             this.ninLvl.Tag = "DPS";
             this.ninLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ninLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
             this.ninLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.ninLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // drgLvl
             // 
+            this.drgLvl.AccessibleName = "DRG";
             this.drgLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drgLvl.Location = new System.Drawing.Point(160, 56);
             this.drgLvl.Name = "drgLvl";
@@ -262,11 +278,13 @@ namespace JobRoulette
             this.drgLvl.TabIndex = 20;
             this.drgLvl.Tag = "DPS";
             this.drgLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.drgLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
             this.drgLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.drgLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // dncLvl
             // 
+            this.dncLvl.AccessibleName = "DNC";
             this.dncLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dncLvl.Location = new System.Drawing.Point(160, 230);
             this.dncLvl.Name = "dncLvl";
@@ -280,6 +298,7 @@ namespace JobRoulette
             // 
             // mchLvl
             // 
+            this.mchLvl.AccessibleName = "MCH";
             this.mchLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mchLvl.Location = new System.Drawing.Point(160, 206);
             this.mchLvl.Name = "mchLvl";
@@ -293,6 +312,7 @@ namespace JobRoulette
             // 
             // brdLvl
             // 
+            this.brdLvl.AccessibleName = "BRD";
             this.brdLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brdLvl.Location = new System.Drawing.Point(160, 182);
             this.brdLvl.Name = "brdLvl";
@@ -300,11 +320,13 @@ namespace JobRoulette
             this.brdLvl.TabIndex = 25;
             this.brdLvl.Tag = "DPS";
             this.brdLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.brdLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
             this.brdLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.brdLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // blmLvl
             // 
+            this.blmLvl.AccessibleName = "BLM";
             this.blmLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.blmLvl.Location = new System.Drawing.Point(160, 260);
             this.blmLvl.Name = "blmLvl";
@@ -312,11 +334,13 @@ namespace JobRoulette
             this.blmLvl.TabIndex = 28;
             this.blmLvl.Tag = "DPS";
             this.blmLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.blmLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
             this.blmLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.blmLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // pctLvl
             // 
+            this.pctLvl.AccessibleName = "PCT";
             this.pctLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pctLvl.Location = new System.Drawing.Point(160, 332);
             this.pctLvl.Name = "pctLvl";
@@ -330,6 +354,7 @@ namespace JobRoulette
             // 
             // rdmLvl
             // 
+            this.rdmLvl.AccessibleName = "RDM";
             this.rdmLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdmLvl.Location = new System.Drawing.Point(160, 308);
             this.rdmLvl.Name = "rdmLvl";
@@ -343,6 +368,7 @@ namespace JobRoulette
             // 
             // smnLvl
             // 
+            this.smnLvl.AccessibleName = "SMN";
             this.smnLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.smnLvl.Location = new System.Drawing.Point(160, 284);
             this.smnLvl.Name = "smnLvl";
@@ -350,7 +376,7 @@ namespace JobRoulette
             this.smnLvl.TabIndex = 29;
             this.smnLvl.Tag = "DPS";
             this.smnLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.smnLvl.ValueChanged += new System.EventHandler(this.smnLvl_ValueChanged);
+            this.smnLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
             this.smnLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.smnLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
@@ -364,7 +390,6 @@ namespace JobRoulette
             this.pct.TabIndex = 77;
             this.pct.Tag = "DPS";
             this.pct.Text = "Pictomancer";
-            this.pct.Click += new System.EventHandler(this.blu_Click);
             // 
             // rdm
             // 
@@ -627,46 +652,46 @@ namespace JobRoulette
             // tsClear
             // 
             this.tsClear.Name = "tsClear";
-            this.tsClear.Size = new System.Drawing.Size(151, 22);
+            this.tsClear.Size = new System.Drawing.Size(180, 22);
             this.tsClear.Text = "Clear Roll";
             this.tsClear.Click += new System.EventHandler(this.tsReset_Click);
             // 
             // tsFormReset
             // 
             this.tsFormReset.Name = "tsFormReset";
-            this.tsFormReset.Size = new System.Drawing.Size(151, 22);
+            this.tsFormReset.Size = new System.Drawing.Size(180, 22);
             this.tsFormReset.Text = "Reset Form";
             this.tsFormReset.Click += new System.EventHandler(this.tsFormReset_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // tsAOT
             // 
             this.tsAOT.CheckOnClick = true;
             this.tsAOT.Name = "tsAOT";
-            this.tsAOT.Size = new System.Drawing.Size(151, 22);
+            this.tsAOT.Size = new System.Drawing.Size(180, 22);
             this.tsAOT.Text = "Always on Top";
             this.tsAOT.Click += new System.EventHandler(this.tsAOT_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(148, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // tsSave
             // 
             this.tsSave.Name = "tsSave";
-            this.tsSave.Size = new System.Drawing.Size(151, 22);
+            this.tsSave.Size = new System.Drawing.Size(180, 22);
             this.tsSave.Text = "Save";
             this.tsSave.Click += new System.EventHandler(this.tsSave_Click);
             // 
             // tsExit
             // 
             this.tsExit.Name = "tsExit";
-            this.tsExit.Size = new System.Drawing.Size(151, 22);
+            this.tsExit.Size = new System.Drawing.Size(180, 22);
             this.tsExit.Text = "Exit";
             this.tsExit.Click += new System.EventHandler(this.tsExit_Click);
             // 
@@ -703,6 +728,7 @@ namespace JobRoulette
             this.bluCheck.TabStop = false;
             this.bluCheck.Text = "BLU Enabled?";
             this.bluCheck.UseVisualStyleBackColor = true;
+            this.bluCheck.Click += new System.EventHandler(this.bluCheck_Click);
             // 
             // maxLevel
             // 
@@ -827,13 +853,15 @@ namespace JobRoulette
             this.ProfileCB.Items.AddRange(new object[] {
             "Default"});
             this.ProfileCB.Location = new System.Drawing.Point(10, 387);
-            this.ProfileCB.MaxDropDownItems = 67;
+            this.ProfileCB.MaxDropDownItems = 5;
             this.ProfileCB.Name = "ProfileCB";
             this.ProfileCB.Size = new System.Drawing.Size(245, 21);
-            this.ProfileCB.TabIndex = 0;
+            this.ProfileCB.TabIndex = 67;
             this.ProfileCB.TabStop = false;
             this.ProfileCB.SelectedIndexChanged += new System.EventHandler(this.ProfileCB_SelectedIndexChanged);
             this.ProfileCB.Click += new System.EventHandler(this.tsSave_Click);
+            this.ProfileCB.Enter += new System.EventHandler(this.tsSave_Click);
+            this.ProfileCB.MouseEnter += new System.EventHandler(this.tsSave_Click);
             // 
             // pcbAdd
             // 
@@ -849,6 +877,7 @@ namespace JobRoulette
             // 
             // sgeLvl
             // 
+            this.sgeLvl.AccessibleName = "SGE";
             this.sgeLvl.BackColor = System.Drawing.SystemColors.Window;
             this.sgeLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sgeLvl.Location = new System.Drawing.Point(7, 233);
@@ -875,6 +904,7 @@ namespace JobRoulette
             // 
             // vprLvl
             // 
+            this.vprLvl.AccessibleName = "VPR";
             this.vprLvl.BackColor = System.Drawing.SystemColors.Window;
             this.vprLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.vprLvl.Location = new System.Drawing.Point(160, 152);
@@ -901,6 +931,7 @@ namespace JobRoulette
             // 
             // bluLvl
             // 
+            this.bluLvl.AccessibleName = "BLU";
             this.bluLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bluLvl.Location = new System.Drawing.Point(160, 356);
             this.bluLvl.Name = "bluLvl";
@@ -908,6 +939,8 @@ namespace JobRoulette
             this.bluLvl.TabIndex = 32;
             this.bluLvl.Tag = "DPS";
             this.bluLvl.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.bluLvl.ValueChanged += new System.EventHandler(this.anyLvl_ValueChanged);
+            this.bluLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.bluLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
             // blu
@@ -935,6 +968,7 @@ namespace JobRoulette
             // 
             // rprLvl
             // 
+            this.rprLvl.AccessibleName = "RPR";
             this.rprLvl.BackColor = System.Drawing.SystemColors.Window;
             this.rprLvl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rprLvl.Location = new System.Drawing.Point(160, 128);

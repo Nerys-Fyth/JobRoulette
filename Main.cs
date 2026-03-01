@@ -1,84 +1,89 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Xml;
-using System.Xml.Linq;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using Tomlyn;
 
 namespace JobRoulette
 {
     public partial class JobRoulette : Form
     {
         Random rnd = new Random();
-        public string setFile = "JobRoulette.xml";
+        public string tomlFile = "JobRoulette.toml";
         public int maxLvl = 0;
         public char[] cetrim = { 'L', 'v', 'l' };
-
-        public JobRoulette() { InitializeComponent(); ProfileCB.SelectedIndex = 0; LoadSettings(0, true); UpdateMaximums(); }
-
-        public void LoadSettings(int charIdx, bool firstLoad)
+        public string[] skips = { "name", "index", "bluenable", "tanks", "heals", "dps" };
+        public List<CharSettings> charList = new List<CharSettings>();
+        public AppSettings appSettings = new AppSettings();
+        public bool firstload = true;
+        public JobRoulette()
         {
-            List<Job> jobList = new List<Job> { };
-            List<JRsetting> setList = new List<JRsetting> { };
+            InitializeComponent();
+            this.StartPosition = FormStartPosition.Manual;
+            
+            if (File.Exists("JobRoulette.xml")) { ImportXml("JobRoulette.xml"); }
+            else if (!File.Exists(tomlFile)) { SaveSettings(0, "Default"); };
 
-            if (!(File.Exists(setFile)))
-                SaveSettings(0, "Default");
-            else
+            LoadSettings(0);
+        }
+
+        public void LoadSettings(int charIdx) //, bool firstLoad)
+        {
+            appSettings = Toml.ToModel<AppSettings>(File.ReadAllText(tomlFile));
+
+            if (firstload)
             {
-                var xmltest = XDocument.Load(setFile);
-
-                if (!(xmltest.Element("settings").HasAttributes)) { settingsUpdate(); }
-
-                var xml = XDocument.Load(setFile);
-                var charList = xml.Root.Elements("character");
-
-                if (firstLoad)
-                {
-                    int k = 0;
-                    foreach (var i in charList)
-                    {
-                        if (ProfileCB.Items.Count < (k + 1))
-                            ProfileCB.Items.Add(i.FirstAttribute.Value);
-                        else
-                            ProfileCB.Items[k] = i.FirstAttribute.Value;
-
-                        k++;
-                    }
-                }
-    
-                foreach (var i in charList.ToArray()[charIdx].Elements())
-                {
-                    if (i.Name.LocalName.Equals("job"))
-                    {
-                        string xjob = i.Value + "Lvl";
-                        string xlvl = i.FirstAttribute.Value;
-                        jobList.Add(new Job() { job = xjob, level = xlvl });
-                    }
-                    if (i.Name.LocalName.Equals("set"))
-                    {
-                        string xset = i.Value;
-                        string xval = i.FirstAttribute.Value;
-                        setList.Add(new JRsetting() { name = xset, setting = xval });
-                    }
-                }
+                firstload = false;
                 
-                foreach (var j in jobList)
+                int k = 0;
+                foreach (var c in appSettings.Characters)
                 {
-                    Control c = this.Controls.Find(j.job, false)[0];
-                    c.Text = j.level;
+                    string charName = c.Key;
+                    CharSettings character = c.Value;
+
+                    if (k == 0)
+                        ProfileCB.Items[0] = charName;
+                    else
+                        ProfileCB.Items.Add(charName);
+
+                    charList.Add(character);
+                    k++;
                 }
 
-                foreach (var s in setList)
-                {
-                    Control c = setPanel.Controls.Find(s.name, false)[0];
-                    if (c.Name.Equals("bluCheck") && s.setting == "False") { bluCheck.Checked = false; }
-                    if (c.Name.Equals("bluCheck") && s.setting == "True") { bluCheck.Checked = true; }
-                    if (!(c is CheckBox)) { c.Text = s.setting; }
-                }
+                tsAOT.Checked = appSettings.OnTop; this.TopMost = appSettings.OnTop;
+                this.Location = new Point(appSettings.WindowX, appSettings.WindowY);
+                maxLevel.Value = appSettings.MaxLevel; bluMaxLvl.Value = appSettings.MaxBluLevel;
+                ProfileCB.SelectedIndex = appSettings.LastSelectedChar; charIdx = appSettings.LastSelectedChar;
             }
+
+            var stringPropertyNamesAndValues = charList[charIdx].GetType()
+                .GetProperties()
+                .Where(pi => pi.PropertyType == typeof(int) && pi.GetGetMethod() != null)
+                .Select(pi => new
+                {
+                    Name = pi.Name.ToLower(),
+                    Value = pi.GetGetMethod().Invoke(charList[charIdx], null)
+                });
+
+            foreach (var pair in stringPropertyNamesAndValues)
+            {
+                if (skips.Contains(pair.Name))
+                    continue;
+
+                Control c = this.Controls.Find(pair.Name + "Lvl", false)[0];
+                c.Text = pair.Value.ToString();
+            }
+
+            var thisChar = GetChar(charList[charIdx].Name, appSettings);
+
+            bluCheck.Checked = thisChar.BLUenable;
+            cbTank.Checked = thisChar.Tanks;
+            cbHeal.Checked = thisChar.Heals;
+            cbDPS.Checked = thisChar.DPS;
 
             UpdateMaximums();
         }
@@ -101,125 +106,69 @@ namespace JobRoulette
             System.Collections.IList list = this.Controls;
 
             foreach (var lbl in this.Controls.OfType<Label>())
-            {
                 if (lbl.ForeColor == SystemColors.Highlight) { lbl.ForeColor = SystemColors.ControlText; }
-            }
         }
 
         public void Roulette(int minLvl, int maxLvl)
         {
             ResetHighlights();
 
-            int idx = 0;
-            string[] jobs = new string[22];
+            List<string> jobs = new List<string>();
 
             foreach (var nud in this.Controls.OfType<NumericUpDown>())
-            {
                 if (nud.Value <= maxLvl && nud.Value >= minLvl)
                 {
                     if (nud.Name.Equals("bluLvl") && !(bluCheck.Checked)) { continue; }
                     if (nud.Tag.Equals("Tank") && !(cbTank.Checked)) { continue; }
                     if (nud.Tag.Equals("Heal") && !(cbHeal.Checked)) { continue; }
                     if (nud.Tag.Equals("DPS") && !(cbDPS.Checked)) { continue; }
-                    jobs[idx] = nud.Name;
-                    idx++;
+                    jobs.Add(nud.Name);
                 }
-            }
 
-            if (idx == 0)
+            if (jobs.Count == 0)
             {
                 ShowToolTip("No Jobs between " + minLvl + " and " + maxLvl + ".", 2000);
                 return;
             }
 
-            int classNo = rnd.Next(0, idx);
+            int classNo = rnd.Next(0, jobs.Count);
             string cname = jobs[classNo].TrimEnd(cetrim);
 
-            foreach (var lbl in this.Controls.OfType<Label>()) { if (lbl.Name.Equals(cname)) { lbl.ForeColor = SystemColors.Highlight; } }
+            foreach (var lbl in this.Controls.OfType<Label>())
+                if (lbl.Name.Equals(cname))
+                    lbl.ForeColor = SystemColors.Highlight;
         }
 
         public void SaveSettings(int pIdx, string profile)
         {
-            List<Job> jobList = new List<Job> { };
-            List<JRsetting> setList = new List<JRsetting> { };
+            appSettings.WindowX = this.Location.X;
+            appSettings.WindowY = this.Location.Y;
+            appSettings.LastSelectedChar = ProfileCB.SelectedIndex == -1 ? 0 : ProfileCB.SelectedIndex;
 
-            foreach (var nud in this.Controls.OfType<NumericUpDown>())
+            if (pIdx == 0 && profile == "Default")
+                charList.Add(new CharSettings());
+            else if (pIdx == 0 && profile != "Default")
+                charList[0].Name = profile;
+
+            if (appSettings.Characters == null)
+                appSettings.Characters = new Dictionary<string, CharSettings>() { { "Default", new CharSettings() } };
+            else if (charList.Count > appSettings.Characters.Count)
             {
-                string cname = nud.Name.TrimEnd(cetrim);
-                string ctext = nud.Text;
+                int dupes = charList
+                    .Where(n => n.Name == "Default")
+                    .Count();
 
-                jobList.Add(new Job() { job = cname, level = ctext });
+                if (dupes > 1)
+                    charList.RemoveRange(appSettings.Characters.Count, charList.Count - appSettings.Characters.Count);
             }
 
-            System.Collections.IList slist = setPanel.Controls;
-            for (int i = 0; i < slist.Count; i++)
-            {
-                Control c = (Control)slist[i];
+            appSettings.Characters.Clear();
+            foreach (CharSettings c in charList)
+                appSettings.Characters.Add(c.Name, c);
 
-                if (!(c is NumericUpDown || c is CheckBox)) { continue; }
+            string toml = Toml.FromModel(appSettings);
 
-                string sname = c.Name.ToString();
-                string stext = "";
-
-                if (c.Name.Equals("bluCheck")) { stext = bluCheck.Checked.ToString(); }
-                else { stext = c.Text.ToString(); }
-
-                setList.Add(new JRsetting() { name = sname, setting = stext });
-            }
-
-            var jobElements =
-                from j in jobList
-                where j != null
-                select
-                    new XElement("job", j.job,
-                        new XAttribute("level", j.level));
-
-            var setElements =
-                from s in setList
-                select
-                    new XElement("set", s.name,
-                        new XAttribute("setting", s.setting));
-
-            if (!(File.Exists(setFile)))
-            {
-                pIdx = 0; profile = "Default";
-                var doc = new XDocument(
-                        new XComment("Settings file for JobRoulette.exe"),
-                        new XElement("settings",
-                            new XAttribute("version", this.ProductVersion),
-                                new XElement("character",
-                                    new XAttribute("name", profile),
-                                    jobElements,
-                                    setElements
-                                )
-                            )
-                        );
-                doc.Save(setFile);
-            }
-            else
-            {
-                var doc = XDocument.Load(setFile);
-                doc.Element("settings").SetAttributeValue("version", ProductVersion);
-                var oldEle = doc.Element("settings").Elements("character");
-
-                var newEle = new XElement("character",
-                                new XAttribute("name", profile),
-                                jobElements,
-                                setElements
-                             );
-
-                int x = 0;
-                foreach (XElement oe in oldEle)
-                {
-                    if (pIdx == 0 && oe.Attribute("name").Value == "Default") { oe.ReplaceWith(newEle); x++; continue; }
-                    if (oe.Attribute("name").Value == profile) { oe.ReplaceWith(newEle); x++; continue; }
-                }
-
-                if (x == 0)
-                    doc.Element("settings").Add(newEle);
-                
-                doc.Save(setFile);
-            }
+            File.WriteAllText(tomlFile, toml);
         }
 
         public bool CheckCheck()
@@ -230,7 +179,7 @@ namespace JobRoulette
             else { return true; }
         }
 
-        private void ShowToolTip(string message, int duration) { new ToolTip().Show(message, this, Cursor.Position.X - this.Location.X, Cursor.Position.Y - this.Location.Y, duration); }
+        private void ShowToolTip(string message, int duration) { Point mp = System.Windows.Forms.Cursor.Position; new ToolTip().Show(message, this, mp.X - this.Location.X + 16, mp.Y - this.Location.Y, duration); }
 
         private void tsExpert_Click(object sender, EventArgs e) { Roulette(maxLvl, maxLvl); }
 
@@ -250,10 +199,6 @@ namespace JobRoulette
 
         private void maxLevel_ValueChanged(object sender, EventArgs e) { UpdateMaximums(); UpdateMenuBar(); }
 
-        private void smnLvl_ValueChanged(object sender, EventArgs e) { schLvl.Value = smnLvl.Value; }
-
-        private void schLvl_ValueChanged(object sender, EventArgs e) { smnLvl.Value = schLvl.Value; }
-
         private void minLvl_ValueChanged(object sender, EventArgs e)
         {
             foreach (var nud in this.Controls.OfType<NumericUpDown>())
@@ -270,25 +215,40 @@ namespace JobRoulette
                 if (nud.Name.Equals("vprLvl") && nud.Value > 0 && nud.Value < 80) { vprLvl.Minimum = 80; }
                 if (nud.Name.Equals("pctLvl") && nud.Value > 0 && nud.Value < 80) { pctLvl.Minimum = 80; }
             }
+
+            anyLvl_ValueChanged(sender, e);
         }
 
         private void tsAOT_Click(object sender, EventArgs e)
         {
-            if (this.TopMost) { tsAOT.Checked = false; this.TopMost = false; }
-            else { tsAOT.Checked = true; this.TopMost = true; }
+            if (this.TopMost) { tsAOT.Checked = false; this.TopMost = false; appSettings.OnTop = false; }
+            else { tsAOT.Checked = true; this.TopMost = true; appSettings.OnTop = true; }
         }
 
         private void cbCheckClick(object sender, EventArgs e)
         {
             CheckBox chk = (CheckBox)sender;
             bool response = CheckCheck();
-            if (!chk.Checked && !response) { chk.Checked = !chk.Checked; }
+            if (!chk.Checked && !response)
+                chk.Checked = !chk.Checked;
+            
+            charList[ProfileCB.SelectedIndex].Tanks = cbTank.Checked;
+            charList[ProfileCB.SelectedIndex].Heals = cbHeal.Checked;
+            charList[ProfileCB.SelectedIndex].DPS = cbDPS.Checked;
         }
 
-        private void ProfileCB_SelectedIndexChanged(object sender, EventArgs e) { ResetHighlights(); LoadSettings(ProfileCB.SelectedIndex, false); }
+        private void bluCheck_Click(object sender, EventArgs e)
+        {
+            if (bluLvl.Value == 0)
+                bluCheck.Checked = false;
+            charList[ProfileCB.SelectedIndex].BLUenable = bluCheck.Checked;
+        }
+
+        private void ProfileCB_SelectedIndexChanged(object sender, EventArgs e) { ResetHighlights(); LoadSettings(ProfileCB.SelectedIndex); }
 
         private void pcbAdd_Click(object sender, EventArgs e)
         {
+            SaveSettings(ProfileCB.SelectedIndex, ProfileCB.SelectedItem.ToString());
             int pcbLen = ProfileCB.Items.Count; string psdInput = ""; var psdForm = new psdForm();
             psdForm.Location = new Point(this.Location.X + ((this.Width / 2) - (psdForm.Width / 2)), this.Location.Y + this.Height);
             psdForm.ShowDialog();
@@ -296,25 +256,25 @@ namespace JobRoulette
                 if (psd.Name.Equals("psdInput")) { psdInput = psd.Text; continue; }
 
             if (psdInput == "") { return; }
-            
+            else if (ProfileCB.Items.Contains(psdInput)) { ShowToolTip("You can't have two with the same name!", 2000); return; }
+
             if (ProfileCB.Items[0].ToString() == "Default")
             {
-                ProfileCB.Items.Insert(0, psdInput);
-                ProfileCB.Items.RemoveAt(1);
+                ProfileCB.Items[0] = psdInput;
                 SaveSettings(0, psdInput);
-                ProfileCB.SelectedIndex = pcbLen - 1;
             }
             else
             {
-                ProfileCB.Items.Insert(pcbLen, psdInput);
-                SaveSettings(pcbLen - 1, psdInput);
+                ProfileCB.Items.Add(psdInput);    //Insert(pcbLen, psdInput);
+                charList.Add(new CharSettings() { Name = psdInput, Index = pcbLen });
+                SaveSettings(1, psdInput);
                 ProfileCB.SelectedIndex = pcbLen;
             }
         }
 
         private void tsFormReset_Click(object sender, EventArgs e)
         {
-            foreach (var nud in this.Controls.OfType<NumericUpDown>()) { nud.Minimum = 0;  nud.Value = 0; }
+            foreach (var nud in this.Controls.OfType<NumericUpDown>()) { nud.Minimum = 0; nud.Value = 0; }
             foreach (var ctl in setPanel.Controls.OfType<NumericUpDown>())
             {
                 if (ctl.Name.Equals("maxLevel"))
@@ -325,47 +285,42 @@ namespace JobRoulette
             foreach (var ctl in setPanel.Controls.OfType<CheckBox>())
                 ctl.Checked = false;
         }
-
-        private void settingsUpdate()
+        
+        private void ImportXml(string xmlFile)
         {
             List<Job> jobList = new List<Job> { };
             List<JRsetting> setList = new List<JRsetting> { };
 
-            var xml = XDocument.Load(setFile);
+            var xml = XDocument.Load(xmlFile);
+            var cList = xml.Root.Elements("character");
 
-            for (int h = 0; h < xml.Root.Descendants().Count(); h++)
+            if (firstload)
             {
-                if (xml.Root.Descendants().ElementAt(h).Name.LocalName.Equals("job"))
+                int k = 0;
+                foreach (var i in cList)
                 {
-                    string xjob = xml.Root.Descendants().ElementAt(h).Value + "Lvl";
-                    string xlvl = xml.Root.Descendants().ElementAt(h).Attribute("level").Value;
-                    jobList.Add(new Job() { job = xjob, level = xlvl });
-                }
-                if (xml.Root.Descendants().ElementAt(h).Name.LocalName.Equals("set"))
-                {
-                    string xset = xml.Root.Descendants().ElementAt(h).Value;
-                    string xval = xml.Root.Descendants().ElementAt(h).Attribute("setting").Value;
-                    if (xset == "maxLevel") { maxLvl = Int32.Parse(xval); }
-                    setList.Add(new JRsetting() { name = xset, setting = xval });
+                    if (ProfileCB.Items.Count < (k + 1))
+                        ProfileCB.Items.Add(i.FirstAttribute.Value);
+                    else
+                        ProfileCB.Items[k] = i.FirstAttribute.Value;
+
+                    k++;
                 }
             }
 
-            foreach (var j in jobList)
+            for (int x = 0; x < cList.ToList().Count; x++)
             {
-                Control c = this.Controls.Find(j.job, false)[0];
-                c.Text = j.level;
-            }
+                CharSettings newChar = new CharSettings() { Name = cList.ToArray()[x].FirstAttribute.Value, Index = x };
+                foreach (var i in cList.ToArray()[x].Elements())
+                    if (i.Name.LocalName.Equals("job"))
+                        newChar.GetType().GetProperty(i.Value.ToUpper()).SetValue(newChar, Int32.Parse(i.FirstAttribute.Value));
 
-            foreach (var s in setList)
-            {
-                Control c = setPanel.Controls.Find(s.name, false)[0];
-                if (c.Name.Equals("bluCheck") && s.setting == "False") { bluCheck.Checked = false; }
-                if (c.Name.Equals("bluCheck") && s.setting == "True") { bluCheck.Checked = true; }
-                if (!(c is CheckBox)) { c.Text = s.setting; }
-            }
+                charList.Add(newChar);
 
-            File.Delete(setFile);
-            SaveSettings(0, "Default");
+                SaveSettings(x, cList.ToArray()[x].FirstAttribute.Value);
+            }
+            File.Delete(xmlFile);
+            firstload = false;
         }
 
         private void anyLvl_OnFocus(object sender, EventArgs e)
@@ -374,9 +329,27 @@ namespace JobRoulette
             nud.Select(0, 3);
         }
 
-        private void blu_Click(object sender, EventArgs e)
+        private void anyLvl_ValueChanged(object sender, EventArgs e)
         {
+            NumericUpDown nud = (NumericUpDown)sender;
+            string job = nud.AccessibleName;
 
+            if (job == "SMN")
+                schLvl.Value = smnLvl.Value;
+            else if (job == "SCH")
+                smnLvl.Value = schLvl.Value;
+
+            if (ProfileCB.SelectedIndex < 0) { ProfileCB.SelectedIndex = 0; }
+            var c = charList[ProfileCB.SelectedIndex];
+
+            c.GetType().GetProperty(job).SetValue(c, Int32.Parse(nud.Value.ToString()));
+        }
+
+        public CharSettings GetChar(string charName, AppSettings settings)
+        {
+            return settings.Characters.TryGetValue(charName, out var user)
+                ? user
+                : null;
         }
     }
 
@@ -390,5 +363,48 @@ namespace JobRoulette
     {
         public string name { get; set; }
         public string setting { get; set; }
+    }
+
+    public class AppSettings
+    {
+        public int MaxLevel { get; set; } = 100;
+        public int MaxBluLevel { get; set; } = 80;
+        public int WindowX { get; set; } = 0;
+        public int WindowY { get; set; } = 0;
+        public bool OnTop { get; set; } = false;
+        public int LastSelectedChar { get; set; } = 0;
+        public Dictionary<string, CharSettings> Characters { get; set; } // = new Dictionary<string, CharSettings>() { { "Default", new CharSettings() } };
+    }
+
+    public class CharSettings
+    {
+        public string Name { get; set; } = "Default";
+        public int Index { get; set; } = 0;
+        public int PLD { get; set; } = 0;
+        public int WAR { get; set; } = 0;
+        public int DRK { get; set; } = 0;
+        public int GNB { get; set; } = 0;
+        public int WHM { get; set; } = 0;
+        public int SCH { get; set; } = 0;
+        public int AST { get; set; } = 0;
+        public int SGE { get; set; } = 0;
+        public int MNK { get; set; } = 0;
+        public int DRG { get; set; } = 0;
+        public int NIN { get; set; } = 0;
+        public int SAM { get; set; } = 0;
+        public int RPR { get; set; } = 0;
+        public int VPR { get; set; } = 0;
+        public int BRD { get; set; } = 0;
+        public int MCH { get; set; } = 0;
+        public int DNC { get; set; } = 0;
+        public int BLM { get; set; } = 0;
+        public int SMN { get; set; } = 0;
+        public int RDM { get; set; } = 0;
+        public int PCT { get; set; } = 0;
+        public int BLU { get; set; } = 0;
+        public bool BLUenable { get; set; } = false;
+        public bool Tanks { get; set; } = true;
+        public bool Heals { get; set; } = true;
+        public bool DPS { get; set; } = true;
     }
 }
