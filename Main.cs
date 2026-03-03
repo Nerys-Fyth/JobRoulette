@@ -7,19 +7,22 @@ using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Tomlyn;
+using Cursor = System.Windows.Forms.Cursor;
 
 namespace JobRoulette
 {
     public partial class JobRoulette : Form
     {
         Random rnd = new Random();
-        public string tomlFile = "JobRoulette.toml";
+        readonly string tomlFile = "JobRoulette.toml";
         public int maxLvl = 0;
-        public char[] cetrim = { 'L', 'v', 'l' };
-        public string[] skips = { "name", "index", "bluenable", "tanks", "heals", "dps" };
-        public List<CharSettings> charList = new List<CharSettings>();
-        public AppSettings appSettings = new AppSettings();
-        public bool firstload = true;
+        readonly char[] cetrim = { 'L', 'v', 'l' };
+        readonly string[] skips = { "name", "index", "bluenable", "tanks", "heals", "dps" };
+        private List<CharSettings> charList = new List<CharSettings>();
+        private AppSettings appSettings = new AppSettings();
+        private CharSettings resetChar;
+        private bool firstload = true;
+        private bool recentreset = false;
         public JobRoulette()
         {
             InitializeComponent();
@@ -33,10 +36,10 @@ namespace JobRoulette
 
         public void LoadSettings(int charIdx) //, bool firstLoad)
         {
-            appSettings = Toml.ToModel<AppSettings>(File.ReadAllText(tomlFile));
-
             if (firstload)
             {
+                appSettings = Toml.ToModel<AppSettings>(File.ReadAllText(tomlFile));
+
                 firstload = false;
                 
                 int k = 0;
@@ -74,7 +77,7 @@ namespace JobRoulette
                 if (skips.Contains(pair.Name))
                     continue;
 
-                Control c = this.Controls.Find(pair.Name + "Lvl", false)[0];
+                Control c = this.Controls.Find($"{pair.Name}Lvl", false)[0];
                 c.Text = pair.Value.ToString();
             }
 
@@ -91,22 +94,16 @@ namespace JobRoulette
         public void UpdateMaximums()
         {
             if (maxLvl != ((int)maxLevel.Value)) { maxLvl = ((int)maxLevel.Value); }
-
-            foreach (var nud in this.Controls.OfType<NumericUpDown>())
-            {
-                nud.Maximum = maxLvl;
-                if (nud.Name.Equals("bluLvl")) { nud.Maximum = bluMaxLvl.Value; }
-            }
+            foreach (var nud in this.Controls.OfType<NumericUpDown>()) { nud.Maximum = maxLvl; if (nud.Name.Equals("bluLvl")) { nud.Maximum = bluMaxLvl.Value; } }
         }
-
-        public void UpdateMenuBar() { tsFiftyPlus.Text = "50-" + (maxLvl - 1).ToString(); tsSixtyPlus.Text = "60-" + (maxLvl - 1).ToString(); }
 
         public void ResetHighlights()
         {
             System.Collections.IList list = this.Controls;
 
             foreach (var lbl in this.Controls.OfType<Label>())
-                if (lbl.ForeColor == SystemColors.Highlight) { lbl.ForeColor = SystemColors.ControlText; }
+                if (lbl.ForeColor == SystemColors.Highlight)
+                    lbl.ForeColor = SystemColors.ControlText;
         }
 
         public void Roulette(int minLvl, int maxLvl)
@@ -114,6 +111,7 @@ namespace JobRoulette
             ResetHighlights();
 
             List<string> jobs = new List<string>();
+            string message;
 
             foreach (var nud in this.Controls.OfType<NumericUpDown>())
                 if (nud.Value <= maxLvl && nud.Value >= minLvl)
@@ -127,20 +125,45 @@ namespace JobRoulette
 
             if (jobs.Count == 0)
             {
-                ShowToolTip("No Jobs between " + minLvl + " and " + maxLvl + ".", 2000);
-                return;
+                if (minLvl == maxLvl) { message = $"No Jobs at level {maxLvl}."; }
+                else { message = $"No Jobs between level {minLvl} and {maxLvl}."; }
+                ShowToolTip(message, 2000);
             }
+            else
+            {
+                int classNo = rnd.Next(0, jobs.Count);
+                string cname = jobs[classNo].TrimEnd(cetrim);
 
-            int classNo = rnd.Next(0, jobs.Count);
-            string cname = jobs[classNo].TrimEnd(cetrim);
-
-            foreach (var lbl in this.Controls.OfType<Label>())
-                if (lbl.Name.Equals(cname))
-                    lbl.ForeColor = SystemColors.Highlight;
+                foreach (var lbl in this.Controls.OfType<Label>())
+                    if (lbl.Name.Equals(cname))
+                        lbl.ForeColor = SystemColors.Highlight;
+            }
         }
 
         public void SaveSettings(int pIdx, string profile)
         {
+            DialogResult r = new DialogResult();
+            if (recentreset)
+                r = AlertMessage("Form was recently cleared. Do you want to save?\n\nClicking Cancel will restore your settings.");
+
+            if (r == DialogResult.OK)
+                recentreset = false;
+            else if (r == DialogResult.Cancel)
+            {
+                charList[ProfileCB.SelectedIndex] = new CharSettings()
+                {
+                    Name = resetChar.Name,  AST = resetChar.AST, BLM = resetChar.BLM, BLU = resetChar.BLU, BRD = resetChar.BRD,
+                    DNC = resetChar.DNC, DRG = resetChar.DRG, DRK = resetChar.DRK, GNB = resetChar.GNB, MCH = resetChar.MCH,
+                    MNK = resetChar.MNK, NIN = resetChar.NIN, PCT = resetChar.PCT, PLD = resetChar.PLD, RDM = resetChar.RDM,
+                    RPR = resetChar.RPR, SAM = resetChar.SAM, SCH = resetChar.SCH, SGE = resetChar.SGE, SMN = resetChar.SMN,
+                    VPR = resetChar.VPR, WAR = resetChar.WAR, WHM = resetChar.WHM, Index = resetChar.Index, Tanks = resetChar.Tanks,
+                    Heals = resetChar.Heals, DPS = resetChar.DPS, BLUenable = resetChar.BLUenable
+                };
+                LoadSettings(ProfileCB.SelectedIndex);
+                recentreset = false;
+                return;
+            }
+
             appSettings.WindowX = this.Location.X;
             appSettings.WindowY = this.Location.Y;
             appSettings.LastSelectedChar = ProfileCB.SelectedIndex == -1 ? 0 : ProfileCB.SelectedIndex;
@@ -178,26 +201,19 @@ namespace JobRoulette
             if (idx == 0) { return false; }
             else { return true; }
         }
-
-        private void ShowToolTip(string message, int duration) { Point mp = System.Windows.Forms.Cursor.Position; new ToolTip().Show(message, this, mp.X - this.Location.X + 16, mp.Y - this.Location.Y, duration); }
-
+        public void UpdateMenuBar() { tsFiftyPlus.Text = $"50-{(maxLvl - 1).ToString()}"; tsSixtyPlus.Text = $"60-{(maxLvl - 1).ToString()}"; }
+        private void ShowToolTip(string message, int duration) { Point mp = Cursor.Position; new ToolTip().Show(message, this, mp.X - this.Location.X + 16, mp.Y - this.Location.Y, duration); }
         private void tsExpert_Click(object sender, EventArgs e) { Roulette(maxLvl, maxLvl); }
-
         private void tsFiftyPlus_Click(object sender, EventArgs e) { Roulette(50, maxLvl - 1); }
-
         private void tsSixtyPlus_Click(object sender, EventArgs e) { Roulette(60, maxLvl - 1); }
-
         private void tsLeveling_Click(object sender, EventArgs e) { Roulette(16, maxLvl - 1); }
-
         private void tsAll_Click(object sender, EventArgs e) { Roulette(1, maxLvl); }
-
         private void tsReset_Click(object sender, EventArgs e) { ResetHighlights(); }
-
+        private void ProfileCB_Enter(object sender, EventArgs e) { ShowToolTip("Saving...", 1000); SaveSettings(ProfileCB.SelectedIndex, ProfileCB.SelectedItem.ToString()); }
         private void tsSave_Click(object sender, EventArgs e) { SaveSettings(ProfileCB.SelectedIndex, ProfileCB.SelectedItem.ToString()); }
-
         private void tsExit_Click(object sender, EventArgs e) { SaveSettings(ProfileCB.SelectedIndex, ProfileCB.SelectedItem.ToString()); Application.Exit(); }
-
         private void maxLevel_ValueChanged(object sender, EventArgs e) { UpdateMaximums(); UpdateMenuBar(); }
+        private void ProfileCB_SelectedIndexChanged(object sender, EventArgs e) { ResetHighlights(); LoadSettings(ProfileCB.SelectedIndex); }
 
         private void minLvl_ValueChanged(object sender, EventArgs e)
         {
@@ -244,8 +260,6 @@ namespace JobRoulette
             charList[ProfileCB.SelectedIndex].BLUenable = bluCheck.Checked;
         }
 
-        private void ProfileCB_SelectedIndexChanged(object sender, EventArgs e) { ResetHighlights(); LoadSettings(ProfileCB.SelectedIndex); }
-
         private void pcbAdd_Click(object sender, EventArgs e)
         {
             SaveSettings(ProfileCB.SelectedIndex, ProfileCB.SelectedItem.ToString());
@@ -272,18 +286,71 @@ namespace JobRoulette
             }
         }
 
+        private void pcbDel_Click(object sender, EventArgs e)
+        {
+            if (ProfileCB.Items.Count <= 1) { ShowToolTip("Unable to delete the last character profile.", 2000); return; }
+            else
+            {
+                DialogResult r = AlertMessage("Do you want to remove this character?");
+                if (r == DialogResult.Yes)
+                {
+                    int idx = ProfileCB.SelectedIndex;
+                    charList.RemoveAt(idx);
+                    for (int i = 0; i < charList.Count; i++) { charList[i].Index = i; }
+                    ProfileCB.Items.RemoveAt(idx);
+                    SaveSettings(0, ProfileCB.Items[0].ToString());
+                    ProfileCB.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private DialogResult AlertMessage(string message)
+        {
+            using (var mbForm = new mbBody())
+            {
+                foreach (var item in mbForm.Controls.OfType<Label>())
+                    if (item.Name.Equals("mbText"))
+                        item.Text = message;
+
+                var result = mbForm.ShowDialog();
+                
+                return result;
+            }
+        }
+
         private void tsFormReset_Click(object sender, EventArgs e)
         {
-            foreach (var nud in this.Controls.OfType<NumericUpDown>()) { nud.Minimum = 0; nud.Value = 0; }
-            foreach (var ctl in setPanel.Controls.OfType<NumericUpDown>())
+            resetChar = new CharSettings() 
+            { 
+                Name = charList[ProfileCB.SelectedIndex].Name, AST = charList[ProfileCB.SelectedIndex].AST, BLM = charList[ProfileCB.SelectedIndex].BLM,
+                BLU = charList[ProfileCB.SelectedIndex].BLU, BRD = charList[ProfileCB.SelectedIndex].BRD, DNC = charList[ProfileCB.SelectedIndex].DNC,
+                DRG = charList[ProfileCB.SelectedIndex].DRG, DRK = charList[ProfileCB.SelectedIndex].DRK, GNB = charList[ProfileCB.SelectedIndex].GNB,
+                MCH = charList[ProfileCB.SelectedIndex].MCH, MNK = charList[ProfileCB.SelectedIndex].MNK, NIN = charList[ProfileCB.SelectedIndex].NIN,
+                PCT = charList[ProfileCB.SelectedIndex].PCT, PLD = charList[ProfileCB.SelectedIndex].PLD, RDM = charList[ProfileCB.SelectedIndex].RDM,
+                RPR = charList[ProfileCB.SelectedIndex].RPR, SAM = charList[ProfileCB.SelectedIndex].SAM, SCH = charList[ProfileCB.SelectedIndex].SCH,
+                SGE = charList[ProfileCB.SelectedIndex].SGE, SMN = charList[ProfileCB.SelectedIndex].SMN, VPR = charList[ProfileCB.SelectedIndex].VPR,
+                WAR = charList[ProfileCB.SelectedIndex].WAR, WHM = charList[ProfileCB.SelectedIndex].WHM, Index = charList[ProfileCB.SelectedIndex].Index,
+                Tanks = charList[ProfileCB.SelectedIndex].Tanks, Heals = charList[ProfileCB.SelectedIndex].Heals, DPS = charList[ProfileCB.SelectedIndex].DPS,
+                BLUenable = charList[ProfileCB.SelectedIndex].BLUenable
+            };
+           
+            DialogResult r = AlertMessage("Are you sure you want to reset this character?");
+            if (r == DialogResult.OK)
             {
-                if (ctl.Name.Equals("maxLevel"))
-                    ctl.Value = 100;
-                if (ctl.Name.Equals("bluMaxLvl"))
-                    ctl.Value = 80;
+                recentreset = true;
+                foreach (var nud in this.Controls.OfType<NumericUpDown>()) { nud.Minimum = 0; nud.Value = 0; }
+                foreach (var ctl in setPanel.Controls.OfType<NumericUpDown>())
+                {
+                    if (ctl.Name.Equals("maxLevel"))
+                        ctl.Value = 100;
+                    if (ctl.Name.Equals("bluMaxLvl"))
+                        ctl.Value = 80;
+                }
+                foreach (var ctl in setPanel.Controls.OfType<CheckBox>())
+                    ctl.Checked = false;
             }
-            foreach (var ctl in setPanel.Controls.OfType<CheckBox>())
-                ctl.Checked = false;
+            else
+                return;
         }
         
         private void ImportXml(string xmlFile)
@@ -340,17 +407,14 @@ namespace JobRoulette
                 smnLvl.Value = schLvl.Value;
 
             if (ProfileCB.SelectedIndex < 0) { ProfileCB.SelectedIndex = 0; }
-            var c = charList[ProfileCB.SelectedIndex];
-
-            c.GetType().GetProperty(job).SetValue(c, Int32.Parse(nud.Value.ToString()));
+            //if (!recentreset)
+            //{
+                CharSettings c = charList[ProfileCB.SelectedIndex];
+                c.GetType().GetProperty(job).SetValue(c, Int32.Parse(nud.Value.ToString()));
+            //}
         }
 
-        public CharSettings GetChar(string charName, AppSettings settings)
-        {
-            return settings.Characters.TryGetValue(charName, out var user)
-                ? user
-                : null;
-        }
+        public CharSettings GetChar(string charName, AppSettings settings) { return settings.Characters.TryGetValue(charName, out var user) ? user : null; }
     }
 
     internal class Job

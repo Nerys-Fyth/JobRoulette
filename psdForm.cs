@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JobRoulette
@@ -18,6 +11,8 @@ namespace JobRoulette
         {
             if (e.KeyCode == Keys.Enter)
                 psdSaveButton_Click(this, null);
+            if (e.KeyCode == Keys.Escape)
+                this.Close();
         }
 
         private void psdSaveButton_Click(object sender, EventArgs e)

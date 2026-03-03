@@ -100,6 +100,8 @@ namespace JobRoulette
             this.blu = new System.Windows.Forms.Label();
             this.rpr = new System.Windows.Forms.Label();
             this.rprLvl = new System.Windows.Forms.NumericUpDown();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.pcbDel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pldLvl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gnbLvl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.drkLvl)).BeginInit();
@@ -639,10 +641,11 @@ namespace JobRoulette
             this.tsMenu.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsClear,
-            this.tsFormReset,
             this.toolStripSeparator2,
             this.tsAOT,
             this.toolStripSeparator1,
+            this.tsFormReset,
+            this.toolStripSeparator3,
             this.tsSave,
             this.tsExit});
             this.tsMenu.Name = "tsMenu";
@@ -658,6 +661,8 @@ namespace JobRoulette
             // 
             // tsFormReset
             // 
+            this.tsFormReset.Font = new System.Drawing.Font("Segoe UI", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsFormReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.tsFormReset.Name = "tsFormReset";
             this.tsFormReset.Size = new System.Drawing.Size(180, 22);
             this.tsFormReset.Text = "Reset Form";
@@ -855,17 +860,17 @@ namespace JobRoulette
             this.ProfileCB.Location = new System.Drawing.Point(10, 387);
             this.ProfileCB.MaxDropDownItems = 5;
             this.ProfileCB.Name = "ProfileCB";
-            this.ProfileCB.Size = new System.Drawing.Size(245, 21);
+            this.ProfileCB.Size = new System.Drawing.Size(184, 21);
             this.ProfileCB.TabIndex = 67;
             this.ProfileCB.TabStop = false;
             this.ProfileCB.SelectedIndexChanged += new System.EventHandler(this.ProfileCB_SelectedIndexChanged);
             this.ProfileCB.Click += new System.EventHandler(this.tsSave_Click);
-            this.ProfileCB.Enter += new System.EventHandler(this.tsSave_Click);
-            this.ProfileCB.MouseEnter += new System.EventHandler(this.tsSave_Click);
+            this.ProfileCB.Enter += new System.EventHandler(this.ProfileCB_Enter);
+            this.ProfileCB.MouseEnter += new System.EventHandler(this.ProfileCB_Enter);
             // 
             // pcbAdd
             // 
-            this.pcbAdd.Location = new System.Drawing.Point(261, 386);
+            this.pcbAdd.Location = new System.Drawing.Point(201, 384);
             this.pcbAdd.Name = "pcbAdd";
             this.pcbAdd.Size = new System.Drawing.Size(45, 25);
             this.pcbAdd.TabIndex = 68;
@@ -981,6 +986,23 @@ namespace JobRoulette
             this.rprLvl.Click += new System.EventHandler(this.anyLvl_OnFocus);
             this.rprLvl.Enter += new System.EventHandler(this.anyLvl_OnFocus);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
+            // 
+            // pcbDel
+            // 
+            this.pcbDel.Location = new System.Drawing.Point(251, 384);
+            this.pcbDel.Name = "pcbDel";
+            this.pcbDel.Size = new System.Drawing.Size(58, 25);
+            this.pcbDel.TabIndex = 111;
+            this.pcbDel.TabStop = false;
+            this.pcbDel.Text = "Delete";
+            this.pcbDel.UseMnemonic = false;
+            this.pcbDel.UseVisualStyleBackColor = true;
+            this.pcbDel.Click += new System.EventHandler(this.pcbDel_Click);
+            // 
             // JobRoulette
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -988,6 +1010,7 @@ namespace JobRoulette
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(316, 415);
             this.ControlBox = false;
+            this.Controls.Add(this.pcbDel);
             this.Controls.Add(this.rpr);
             this.Controls.Add(this.rprLvl);
             this.Controls.Add(this.bluLvl);
@@ -1049,7 +1072,7 @@ namespace JobRoulette
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.RightToLeftLayout = true;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Job Roulette";
             ((System.ComponentModel.ISupportInitialize)(this.pldLvl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gnbLvl)).EndInit();
@@ -1161,6 +1184,8 @@ namespace JobRoulette
         private System.Windows.Forms.Label blu;
         private System.Windows.Forms.Label rpr;
         private System.Windows.Forms.NumericUpDown rprLvl;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.Button pcbDel;
     }
 }
 
