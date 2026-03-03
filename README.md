@@ -1,5 +1,7 @@
 # JobRoulette
-Dice Roll your job for running fun with friends in FFXIV!
+![App Screenshot](https://github.com/Nerys-Fyth/JobRoulette/blob/master/Image-Resources/JR-Animation.gif)
+
+## Dice Roll your job for running fun with friends in FFXIV!
 
 Just a simple app to randomly choose your job for game time shenanigans in Final Fantasy 14!
 
@@ -13,4 +15,8 @@ BLU is there too not feel left out, but he's Special so disabled by default.
 
 Will automatically save your class levels and minute settings on exiting from the menu to a toml file in the same folder that the app is run from.
 
-.NET 4.8 required
+*****
+
+[Download from the Releases page.](https://github.com/Nerys-Fyth/JobRoulette/releases)
+
+*.NET 4.8 required*
