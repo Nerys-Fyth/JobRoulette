@@ -24,4 +24,5 @@ Will automatically save your class levels and minute settings on exiting from th
 *****
 
 ![Screenshot](https://github.com/Nerys-Fyth/JobRoulette/blob/master/Image-Resources/JobRoulette_Screenshot.png)
+
 ![Reset Confirmation](https://github.com/Nerys-Fyth/JobRoulette/blob/master/Image-Resources/JobRoulette_Reset.png)   ![Double Checking](https://github.com/Nerys-Fyth/JobRoulette/blob/master/Image-Resources/JobRoulette_AreYouSure.png)
