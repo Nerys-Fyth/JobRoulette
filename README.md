@@ -20,3 +20,7 @@ Will automatically save your class levels and minute settings on exiting from th
 [Download from the Releases page.](https://github.com/Nerys-Fyth/JobRoulette/releases)
 
 *.NET 4.8 required*
+
+*****
+
+![Screenshot](https://github.com/Nerys-Fyth/JobRoulette/blob/master/Image-Resources/JobRoulette_Screenshot.png)   ![Reset Confirmation](https://github.com/Nerys-Fyth/JobRoulette/blob/master/Image-Resources/JobRoulette_Reset.png)   ![Double Checking](https://github.com/Nerys-Fyth/JobRoulette/blob/master/Image-Resources/JobRoulette_AreYouSure.png)
